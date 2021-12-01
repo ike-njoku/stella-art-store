@@ -20,6 +20,7 @@
     "@angular/router": "~12.2.0",
     "force-ssl-heroku": "^1.0.2",
     "jwt-decode": "^3.1.2",
+    "npm": "^8.1.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -40,6 +41,6 @@
   },
   "engines": {
     "node": "14.x",
-    "npm": "6.9.0"
+    "npm": "^8.1.4"
   }
 }
