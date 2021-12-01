@@ -1,0 +1,68 @@
+<div id="side-nav" class="text-center">
+  <div class="mg-b-8 text-right">
+    <span class="mdi mdi-cart">{{cartService.cartTotal | currency}}</span>
+  </div>
+  <div style="color: green;" class="mg-b-8 text-right font-bold"></div>
+  <h2>
+  </h2>
+  <div class="mg-t-10 grid">
+  </div>
+  <div class="mg-t-10 grid">
+    <button (click)="checkOut()" class="col-12 mg-t-2 mg-b-2 pad-4 rad-10 primary-button"> Checkout </button>
+    <button (click)="goToShop()" style="background-color: white;" class="col-12 mg-t-2 mg-b-2 pad-4 rad-10"> Shop </button>
+  </div>
+  <div class="mg-t-10 text-left">
+    <h4>Dimensions:</h4>
+  </div>
+  <div class="mg-t-10 text-left">
+    <h4>Materials:</h4>
+  </div>
+  <div class="mg-t-10 text-left">
+    <h4>Descsription:</h4>
+  </div>
+</div>
+
+<div id="main">
+  <table style="width: 100%;">
+    <thead style="width: 100%;" class="text-left">
+      <th>
+        Product
+      </th>
+      <th>
+        Quantity
+      </th>
+      <th>
+        Dimensions
+      </th>
+      <th>
+        Price
+      </th>
+    </thead>
+
+    <tbody style="width: 100%;" class="text-left mg-t-10">
+      <tr *ngFor="let product of cartService.productsInCart">
+        <td>
+          <div class="mg-b-3">
+            {{product.name | titlecase}}
+          </div>
+          <div class="image-container text-center">
+            <img src="{{baseUrl}}/{{product.files[0].filename}}" alt="">
+          </div>
+        </td>
+        <td>
+          <select name="" id="">
+            <option></option>
+          </select>
+        </td>
+        <td>{{product.dimensions}}</td>
+        <td>{{product.price | currency}}</td>
+        <td>
+          <span style="cursor: pointer;" (click)="cartService.removeProductFromCart(product)" class="mdi mdi-close-circle-outline"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="cartService.productsInCart.length < 1" class="mg-t-6">
+    <h2>You have no products in your cart</h2>
+  </div>
+</div>

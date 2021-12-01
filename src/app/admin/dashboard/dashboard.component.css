@@ -1,0 +1,21 @@
+.side-nav {
+  background-color: #1D2546;
+  color: white;
+  width: 20%;
+  height: 100vh;
+  position: fixed;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+#avatar {
+  height: calc(100vw/8);
+  width: calc(100vw/8);
+  border-radius: 50%;
+  border-top: 5%;
+}
+
+.main {
+  margin-left: 20%;
+  padding: 5%;
+}

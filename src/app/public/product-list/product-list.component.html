@@ -1,0 +1,36 @@
+<div id="side-nav" class="text-center">
+  <div class="mg-b-8 text-right">
+    <span style="cursor: pointer;" (click)="goToCart()" class="mdi mdi-cart">{{cartService.productsInCart.length}}</span>
+  </div>
+  <h2>Shop</h2>
+  <input id="search-bar" class="mg-b-2" type="search" placeholder="Search for Arts">
+  <button (click)="goToIndex();" style="background-color: black; color: white;" class="col-12 mg-t-2 mg-b-2 pad-4 rad-10"> Back </button>
+  <div class="mg-t-10 text-left">
+    <h4 class="mg-t-10">Filter by</h4>
+    <div class="mg-t-8">
+      Category Name
+    </div>
+    <div class="mg-t-8">
+      Materials Used
+    </div>
+  </div>
+</div>
+<div id="main">
+  <div class="pad-4">
+    <h1>Gallery </h1>
+  </div>
+  <div class="pad-2">
+    <div class="grid">
+      <a (click)="viewProductDetails(product)" *ngFor="let product of allProducts"
+        class="col-6 mg-2 mg-b-3 col-sm-full  shd-1 card product-container">
+        <div class="image-container">
+          <img height="50px" width="50px" src="{{baseUrl}}/{{product.files[0].filename}}" alt="">
+        </div>
+        <div class="pad-2 text-center">
+          <div class="font-bold">{{product.name}}</div>
+          <div style="color: green;" class="font-small mg-2 col-10"> {{product.price | currency}}</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

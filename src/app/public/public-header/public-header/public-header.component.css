@@ -1,0 +1,9 @@
+ul li {
+  display: inline-block;
+  margin-left: 2%;
+  float: right;
+}
+
+.card {
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+}

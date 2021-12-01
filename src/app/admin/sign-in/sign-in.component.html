@@ -1,0 +1,13 @@
+<form [formGroup]="adminSignInForm">
+  <div style="padding:auto; padding-top: 5%;" class="mg-2">
+    <div style="width: 50vh;" class="pad-4 mg-auto shd-10 card rad-5 grid">
+      <div class="col-12 text-center">
+        <img class="rad-360" height="200" width="200" src="../../../assets/static-images/stella-arts-02.jpeg">
+      </div>
+      <div class="col-12 pad-1 font-bold text-center">Welcome back, Stella</div>
+      <input formControlName="userName" class="col-12" type="text | email" placeholder="Email Address">
+      <input formControlName="password" class="col-12" type="password" placeholder="Password">
+      <button (click)="signIn()" class="col-12 mg-t-4 pad-3 submit-button">Sign in</button>
+    </div>
+  </div>
+</form>

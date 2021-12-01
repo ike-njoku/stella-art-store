@@ -1,0 +1,16 @@
+input, select {
+  padding: 3%;
+  margin: 2%;
+}
+
+.card {
+  padding: 5%;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+.submit-button {
+  background-color: #02A651;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}

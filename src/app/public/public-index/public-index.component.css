@@ -1,0 +1,85 @@
+
+video {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.action-button {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  width: 40%;
+  font-size: 1.3rem;
+  box-shadow: 2.6px 2.6px 2.6px rgba(0, 0, 0, 0.3);
+}
+
+.landing-writeup {
+  font-family: 'Signika', sans-serif;
+  font-family: 'Yuji Boku', serif;
+  position: absolute;
+  top: 40%;
+  padding: 5%;
+  font-size: 380%;
+  text-shadow: 3px 3px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+#about {
+  font-size: 1.2rem;
+  background-color: #E9E8ED;
+  overflow: hidden;
+  text-align: justify;
+}
+
+#contact {
+  background-image: url('../../../assets/static-images/yellow-airplane-png.png');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.contact-links a {
+  font-size: 2.1rem;
+  color: black;
+}
+
+.images-container div {
+  height:calc(100vh/4);
+  width: calc(100vw/2/6);
+  border: solid 1.5px black;
+  overflow: hidden;
+}
+
+#images-grid {
+  /* box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3); */
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+form {
+  margin: 0;
+  padding: 0;
+}
+
+form input {
+  padding: 2%;
+}
+
+@media (max-width: 600px) {
+
+  .images-container {
+    margin-top: 8%;
+  }
+
+  .images-container div {
+    height: 60px;
+    width: 60px;
+    padding: 2%;
+    border: solid 1.5px black;
+    overflow: hidden;
+  }
+}

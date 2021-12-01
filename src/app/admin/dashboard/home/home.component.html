@@ -1,0 +1,71 @@
+<div class="grid mg-b-4 card mg-2"></div>
+<div class="grid pad-2">
+  <div class="col-7 grid col-sm-full">
+    <div class="col-6 card pad-5 mg-2">
+      <h2>Collection</h2>
+      <div>
+        <button  style="height: 70px; width: 70px"class="rad-360">
+          +
+        </button>
+        <button style="height: 70px; width: 70px" class="rad-360">
+          -
+        </button>
+      </div>
+    </div>
+    <div class="col-6 card pad-5 mg-2">
+      <h2>Category</h2>
+      <div>
+        <button  style="height: 70px; width: 70px"class="rad-360">
+          +
+        </button>
+        <button style="height: 70px; width: 70px" class="rad-360">
+          -
+        </button>
+      </div>
+    </div>
+    <div class="col-6 card pad-5 mg-2">
+      <h2>Product List</h2>
+    </div>
+    <div class="col-6 card pad-5 mg-2">
+      <h2>Gallery</h2>
+      <div>
+        <button  style="height: 70px; width: 70px"class="rad-360">
+          +
+        </button>
+        <button style="height: 70px; width: 70px" class="rad-360">
+          -
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card col-5 col-sm-full">
+    <h2>Create New Product</h2>
+    <form [formGroup]="createProductForm" class="grid">
+      <div *ngIf="selectedFileData" class="col-12 pad-2 text-center">
+        <img height="40" width="40" *ngFor="let url of selectedFileData" src="{{url}}" alt=""
+          class="col-3 rad-360 mg-2">
+      </div>
+      <input formControlName="name" class="col-12" type="text" placeholder="Product Name / Title">
+      <select formControlName="category" class="col-12" name="" id="">
+        <option>category</option>
+      </select>
+      <select formControlName="collectionName" class="col-12" name="" id="">
+        <option>Collection</option>
+      </select>
+      <input formControlName="dimensions" class="col-12" type="text" placeholder="Dimensions">
+      <input formControlName="quantity" class="col-12" type="text" placeholder="quantity">
+      <input formControlName="discountPrice" class="col-12" type="text" placeholder="Discount Price">
+      <input formControlName="price" class="col-12" type="text" placeholder="Price in Dollars">
+      <textarea formControlName="inspiration" class="col-12" name="" id="" cols="30" rows="2"
+        placeholder="Inspiration for Art"></textarea>
+      <textarea formControlName="materials" class="col-12" name="" id="" cols="30" rows="2"
+        placeholder="Materials"></textarea>
+      <textarea formControlName="description" class="col-12" name="" id="" cols="30" rows="2"
+        placeholder="Description"></textarea>
+      <input type="button" class="col-12" (click)="fileInput.click()" value="Upload File(s)">
+      <input formControlName="files" (change)="selectFiles($event)" #fileInput hidden type="file" multiple>
+      <input *ngIf="!submitting || createProductForm.valid" class="col-12" (click)="createProduct()" type="button" value="Create Product">
+    </form>
+  </div>
+</div>
+

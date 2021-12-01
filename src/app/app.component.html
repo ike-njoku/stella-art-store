@@ -1,0 +1,9 @@
+<app-pop-up-notification></app-pop-up-notification>
+<div id="loader" *ngIf="!pageHasLoaded">
+  {{loaderText}}
+  <div>
+    {{loadTime}}
+  </div>
+</div>
+<router-outlet></router-outlet>
+

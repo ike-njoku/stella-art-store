@@ -1,0 +1,6 @@
+<div *ngIf="popUpNotificationService.notification" class="centered grid">
+  <span class="col-9">
+  {{popUpNotificationService.notification}}
+  </span>
+  <span style="cursor: pointer;" (click)="popUpNotificationService.clearNotification()" class="col-3 mg-l-2"> <b>Close</b></span>
+</div>
