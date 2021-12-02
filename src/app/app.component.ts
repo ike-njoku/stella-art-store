@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { AnimationService } from './shared-services/animation.service';
 
 @Component({
@@ -21,6 +22,10 @@ export class AppComponent implements OnInit {
 
   public pageHasLoaded: boolean = false;
   ngOnInit(): void {
+    console.table({
+      Live: environment.production,
+      url: environment.apiBaseUrl
+    });
     this.checkPageLoad();
     this.addInterval()
   }
