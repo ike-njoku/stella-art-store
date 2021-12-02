@@ -1,4 +1,4 @@
 export const environment = {
-  apiBaseUrl: 'http://localhost:3000',
+  apiBaseUrl: 'https://stella-art-store-backend.herokuapp.com',
   production: true
 };

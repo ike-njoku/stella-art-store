@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
       Live: environment.production,
       url: environment.apiBaseUrl
     });
+
     this.checkPageLoad();
     this.addInterval()
   }
