@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PopUpNotificationModule } from './pop-up-notification/pop-up-notification.module';
 import { AuthGuard } from './admin/auth/auth.guard';
+import { FlutterwaveModule } from 'flutterwave-angular-v3';
 
 @NgModule({
   declarations: [
@@ -15,8 +16,11 @@ import { AuthGuard } from './admin/auth/auth.guard';
     AppRoutingModule,
     HttpClientModule,
     PopUpNotificationModule,
+    FlutterwaveModule
   ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
