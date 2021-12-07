@@ -1,1 +1,32 @@
-<p>checkout-success works!</p>
+  <div id="side-nav" class="text-center">
+    <div class="mg-b-8 text-right">
+    </div>
+    <div style="color: green;" class="mg-b-8 text-right font-bold"></div>
+    <h2>
+    </h2>
+    <div class="mg-t-10 grid">
+    </div>
+    <div class="mg-t-10 grid">
+      <button (click)="goToShop()"  class="col-12 mg-t-2 mg-b-2 pad-4 rad-10 primary-button"> Back to Shop </button>
+      <button  (click)="goToIndex()" style="background-color: white;" class="col-12 mg-t-2 mg-b-2 pad-4 rad-10"> Home </button>
+    </div>
+  </div>
+  <div id="main">
+    <h2>Your Payment is successful </h2>
+      <h4>Some important notes</h4>
+      <ul>
+        <li>
+          You will receive an email from Paystack with your transaction reference.
+        </li>
+        <li>
+          You will reveive an invoice from ikenjokudc@gmail.com containing your invoice for this transaction
+        </li>
+        <li>
+          Once your order is confirmed, You would be notified about Delivery processes
+        </li>
+      </ul>
+    <div class="mg-t-10 font-larger">
+      Transaction Reference: <b> {{transactionReference}} </b>
+    </div>
+  </div>
+
