@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'product/:id', loadChildren: () => import('./product-detail/product-detail.module').then(m => m.ProductDetailModule) },
   { path: 'checkout/cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule) },
   { path: 'checkout/address', loadChildren: () => import('./address-form/address-form.module').then(m => m.AddressFormModule) },
+  { path: 'checkout/success', loadChildren: () => import('./checkout-success/checkout-success.module').then(m => m.CheckoutSuccessModule) },
 ];
 
 @NgModule({
