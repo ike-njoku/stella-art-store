@@ -9,7 +9,7 @@
   </div>
   <div class="mg-t-10 grid">
     <form action="" class="col-12 grid">
-      <button class="col-12 mg-t-2 mg-b-2 pad-4 rad-10 primary-button"> Pay </button>
+      <button (click)="cartService.calculateCartTotal();  payWithPayStack()" class="col-12 mg-t-2 mg-b-2 pad-4 rad-10 primary-button"> Pay </button>
     </form>
     <button style="background-color: white;" class="col-12 mg-t-2 mg-b-2 pad-4 rad-10"> Back </button>
   </div>

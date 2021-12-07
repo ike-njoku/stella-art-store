@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AddressFormRoutingModule } from './address-form-routing.module';
 import { AddressFormComponent } from './address-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,8 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AddressFormRoutingModule,
-    ReactiveFormsModule,
     FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AddressFormModule { }
