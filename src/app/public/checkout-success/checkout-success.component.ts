@@ -18,6 +18,7 @@ export class CheckoutSuccessComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTransactionReference();
+    this.cartService.postOrder();
   }
 
   clearCart() {
