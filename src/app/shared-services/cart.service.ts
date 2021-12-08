@@ -1,9 +1,9 @@
-import { JsonpClientBackend } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs/operators';
 import { AuthService } from '../admin/auth/auth.service';
 import { PopUpNotificationService } from '../pop-up-notification/pop-up-notification.service';
+import { DeliveryAdddress } from '../shared-interfaces/create-order-dto';
 import { GetProductDto } from './get-product-dto';
+import { OrderService } from './order.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,10 @@ import { GetProductDto } from './get-product-dto';
 export class CartService {
   productsInCart: GetProductDto[] = [];
   cartTotal: number = 0;
-
   constructor(
     private popUpService: PopUpNotificationService,
     private authService: AuthService,
+    private orderService: OrderService
   ) { }
 
   checkIfProductIsInCart(product: GetProductDto): boolean {
@@ -52,8 +52,10 @@ export class CartService {
     let _localStoreage: string[] = Object.keys(localStorage);
     _localStoreage.forEach((item) => {
       if (item !== this.authService.sessionStorageString) {
-        let _product = JSON.parse(item);
-        this.productsInCart.push(_product)
+        if (item !== this.orderService.deliveryAddressStorageString) {
+          let _product = JSON.parse(item);
+          this.productsInCart.push(_product)
+        }
       }
     });
 
@@ -63,5 +65,12 @@ export class CartService {
       }
       else this.cartTotal += product.price
     })
+  }
+
+
+
+  postOrder() {
+    this.calculateCartTotal();
+    console.log(this.productsInCart)
   }
 }

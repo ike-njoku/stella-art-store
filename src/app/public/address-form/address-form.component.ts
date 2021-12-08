@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CartService } from 'src/app/shared-services/cart.service';
+import { OrderService } from 'src/app/shared-services/order.service';
 import { PayWithPaypalService } from 'src/app/shared-services/pay-with-paypal.service';
 import { PayWithPaystackService } from 'src/app/shared-services/pay-with-paystack.service';
 import { AddressHelperService, getCountriesDTO, getStateDTO } from './address-helper.service';
@@ -17,7 +18,8 @@ export class AddressFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     public cartService: CartService,
     private payPalService: PayWithPaypalService,
-    private payStackService: PayWithPaystackService
+    private payStackService: PayWithPaystackService,
+    public orderService: OrderService
   ) { }
 
   ngOnInit(): void {
@@ -129,12 +131,6 @@ export class AddressFormComponent implements OnInit {
           console.table(response)
         }
       )
-  }
-
-  openPaymentWindow(url: string) {
-  }
-
-  payWithFlutterWave() {
   }
 
   payWithPayPal() {
