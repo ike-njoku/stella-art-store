@@ -23,8 +23,8 @@ export class CheckoutSuccessComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.cartService.calculateCartTotal();
     this.getTransactionReference();
-    this.cartService.postOrder();
     this.sendOrder();
   }
 
@@ -46,10 +46,13 @@ export class CheckoutSuccessComponent implements OnInit {
     this.orderService.createOrder(order)
       .subscribe(
         (response: ServerResponseDto) => {
+          console.log(response)
           this.popUpService.addNotification(response.message, 5000);
           if (response.status == 'success') {
             localStorage.clear();
           }
+          else
+          this.popUpService.addNotification(response.message, 5000);
         },
         (error: string) => this.popUpService.addNotification(error)
       )

@@ -66,11 +66,4 @@ export class CartService {
       else this.cartTotal += product.price
     })
   }
-
-
-
-  postOrder() {
-    this.calculateCartTotal();
-    console.log(this.productsInCart)
-  }
 }
