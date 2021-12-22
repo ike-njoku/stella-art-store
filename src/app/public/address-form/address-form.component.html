@@ -9,7 +9,9 @@
   </div>
   <div class="mg-t-10 grid">
     <form action="" class="col-12 grid">
-      <button (click)="cartService.calculateCartTotal(); this.orderService.storeDeliveryAddress(deliveryAddressForm.value);  payWithPayStack()" class="col-12 mg-t-2 mg-b-2 pad-4 rad-10 primary-button"> Pay </button>
+      <button
+        (click)="cartService.calculateCartTotal(); this.orderService.storeDeliveryAddress(deliveryAddressForm.value);  payWithPayStack()"
+        class="col-12 mg-t-2 mg-b-2 pad-4 rad-10 primary-button"> Pay </button>
     </form>
     <button style="background-color: white;" class="col-12 mg-t-2 mg-b-2 pad-4 rad-10"> Back </button>
   </div>
@@ -32,29 +34,32 @@
     <input formControlName="emailAddress" placeholder="Email Address" class="col-12" type="text">
     <label for="" class="pad-t-1 col-12 grid">
       <div class="mg-1 pad-1">Country</div>
-      <select formControlName="country" [(ngModel)]="selectedCountry" (ngModelChange)="getStates(); getSelectedCountryDialCode()" class="col-12"
-      name="country" id="">
-      <option value="" disabled selected>Country</option>
-      <option value="{{country.name}}" *ngFor="let country of countries"> {{country.name}} </option>
-    </select>
+      <select formControlName="country" [(ngModel)]="selectedCountry"
+        (ngModelChange)="getStates(); getSelectedCountryDialCode()" class="col-12" name="country" id="">
+        <option value="" disabled selected>Country</option>
+        <option value="{{country.name}}" *ngFor="let country of countries"> {{country.name}} </option>
+      </select>
     </label>
     <label for="" class="pad-t-1 col-12 grid">
       <div class="mg-1 pad-1">State</div>
-      <select formControlName="state" [(ngModel)]="selectedState" (ngModelChange)="getCities()" class="col-12" name="states" id="">
+      <select formControlName="state" [(ngModel)]="selectedState" (ngModelChange)="getCities()" class="col-12"
+        name="states" id="">
         <option value="{{state.name}}" *ngFor="let state of states"> {{state.name}} </option>
       </select>
     </label>
     <label for="" class="pad-t-1 col-12 grid">
       <div class="mg-1 pad-1">City</div>
-    <select formControlName="city" name="" id="" class="col-12">
-      <option *ngFor="let city of cities" value="{{city}}">{{city}}</option>
-    </select>
+      <select formControlName="city" name="" id="" class="col-12">
+        <option *ngFor="let city of cities" value="{{city}}">{{city}}</option>
+      </select>
     </label>
     <label for="" class="pad-t-1 col-12 grid">
       <div class="mg-1 pad-1">{{countryDialCode}}</div>
-    <input formControlName="primaryPhoneNumber" placeholder="Phone Number" class="col-12" type="text">
+      <input formControlName="primaryPhoneNumber" placeholder="Phone Number" class="col-12" type="text">
     </label>
     <input formControlName="secondaryPhoneNumber" placeholder="Mobile Number" class="col-12" type="text">
-    <textarea formControlName="address" class="col-12" name="" id="" cols="30" rows="2" placeholder="Address"></textarea>
+    <textarea formControlName="address" class="col-12" name="" id="" cols="30" rows="2"
+      placeholder="Address"></textarea>
   </form>
 </div>
+
