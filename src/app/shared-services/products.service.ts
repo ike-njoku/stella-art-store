@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { FileUploadService } from '../admin/file-upload.service';
 import { CreateProductDTO } from '../shared-interfaces/create-product-dto';
 import { ServerResponseDto } from '../shared-interfaces/server-response-dto';
+import { GetProductDto } from './get-product-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,15 @@ export class ProductsService {
       (catchError(this.handleErrors))
     )
   }
+
+  deleteProduct(product: GetProductDto): Observable<ServerResponseDto> {
+    const subUrl = `products/${product._id}`;
+    return this.http.delete<ServerResponseDto>(`${environment.apiBaseUrl}/${subUrl}`)
+      .pipe(
+        (catchError(this.handleErrors))
+      )
+  }
+
 
   private handleErrors(error: any) {
     console.log(error)
