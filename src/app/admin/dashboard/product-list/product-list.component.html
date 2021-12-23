@@ -1,0 +1,52 @@
+<div id="delete-modal" class="card delete-modal">
+  <div>
+    <span style="float: right; cursor: pointer;" (click)="toggleModal('delete-modal')" class="mdi mdi-close-circle"></span>
+  </div>
+  <h2>Delete Product?</h2>
+  <Span *ngIf="selectedProduct"> <b>{{selectedProduct.name}}</b></Span> <br>
+  THis process <span style="color: red;">CAN NOT BE UNDONE</span> by any means and this product will be lost forever,
+  Rendering all receipts containing this product invalid. <br>
+  To continue, Type <b *ngIf="selectedProduct">{{selectedProduct._id}}</b> in the inputfield below and click 'Delete'.
+  <div class="mg-t-5 grid">
+    <input #inputField type="text" class="pad-1 col-6">
+    <div class="col-2">
+      <button (click)="deleteProduct(selectedProduct)"
+      style="padding: 3.5%;
+      background-color: red;
+      color: white;" *ngIf="
+      selectedProduct && inputField.value === selectedProduct._id">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div id="update-modal">
+
+</div>
+
+  <div style="background-color: white;" class="sticky-top pad-2">
+    <h2>Product List</h2>
+  </div>
+  <div *ngIf="allProducts.length < 1">
+    You currently have no products
+  </div>
+  <div class="card mg-2" *ngFor="let product of allProducts">
+    <div style="color: green;" class="text-right mg-2 font-small">
+      <div style="color: black;">Price (Discount Price)</div>
+      ${{product.price}} ( ${{product.discountPrice}} )
+    </div>
+    <b>
+      {{product.name}}
+    </b>
+    <div>
+      Product Id: {{product._id}}
+    </div>
+    <div>
+      <img *ngFor="let file of product.files" src="{{apiBase}}/{{file.originalname}}" alt="">
+    </div>
+    <div class="mg-t-4">
+      <button (click)="selectProduct(product);toggleModal('update-modal');" class="float-right">Update</button>
+      <button (click)="selectProduct(product);toggleModal('delete-modal');" class="float-right">Delete</button>
+      <a href="product/{{product._id}}" target="_blank" class="float-right">View as Client</a>
+    </div>
+  </div>
+
