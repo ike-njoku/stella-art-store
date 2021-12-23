@@ -19,9 +19,6 @@
   </div>
 </div>
 
-<div id="update-modal">
-
-</div>
 
   <div style="background-color: white;" class="sticky-top pad-2">
     <h2>Product List</h2>
@@ -44,7 +41,7 @@
       <img *ngFor="let file of product.files" src="{{apiBase}}/{{file.originalname}}" alt="">
     </div>
     <div class="mg-t-4">
-      <button (click)="selectProduct(product);toggleModal('update-modal');" class="float-right">Update</button>
+      <button (click)="goToUpdateRoute(product);" href="" class="float-right">Update</button>
       <button (click)="selectProduct(product);toggleModal('delete-modal');" class="float-right">Delete</button>
       <a href="product/{{product._id}}" target="_blank" class="float-right">View as Client</a>
     </div>

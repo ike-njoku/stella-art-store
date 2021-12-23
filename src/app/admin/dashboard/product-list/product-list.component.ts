@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PopUpNotificationService } from 'src/app/pop-up-notification/pop-up-notification.service';
 import { ServerResponseDto } from 'src/app/shared-interfaces/server-response-dto';
 import { GetProductDto } from 'src/app/shared-services/get-product-dto';
@@ -17,11 +18,17 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private productService: ProductsService,
-    private popUpService: PopUpNotificationService
+    private popUpService: PopUpNotificationService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.getAllProducts()
+  }
+
+  goToUpdateRoute(product: GetProductDto) {
+    this.router.navigate(['../','update', product._id], {relativeTo: this.route});
   }
 
   getAllProducts() {
@@ -39,10 +46,6 @@ export class ProductListComponent implements OnInit {
 
   selectProduct(product: GetProductDto) {
     this.selectedProduct = product;
-  }
-
-  toggleUpdateModal() {
-    document.getElementById('update-modal')
   }
 
   deleteProduct(product: GetProductDto) {
