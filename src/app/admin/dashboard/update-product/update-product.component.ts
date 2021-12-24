@@ -6,6 +6,7 @@ import { ServerResponseDto } from 'src/app/shared-interfaces/server-response-dto
 import { GetProductDto } from 'src/app/shared-services/get-product-dto';
 import { ProductsService } from 'src/app/shared-services/products.service';
 import { environment } from 'src/environments/environment';
+import { FileUploadService } from '../../file-upload.service';
 
 @Component({
   selector: 'app-update-product',
@@ -42,7 +43,8 @@ export class UpdateProductComponent implements OnInit {
     private productService: ProductsService,
     private route: ActivatedRoute,
     private popUpService: PopUpNotificationService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private fileUploadService: FileUploadService
   ) { }
 
   ngOnInit(): void {
@@ -82,7 +84,7 @@ export class UpdateProductComponent implements OnInit {
     filesArray.forEach((file: any) => {
       this.selectedFiles.push(file);
       this.readFile(file);
-    })
+    });
   }
 
   readFile(file: any) {

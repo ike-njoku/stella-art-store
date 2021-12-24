@@ -28,15 +28,11 @@ export class ProductsService {
 
 
   updateProduct(product: GetProductDto, files: File[]): Observable<any> {
-    const subUrl = `products/${product._id}`;
-    return this.http.put(`${environment.apiBaseUrl}/${subUrl}`, product)
+    const subUrl = `products/update/${product._id}`;
+    return this.fileUploadService.uploadFormData(files, subUrl, product)
       .pipe(
         (catchError(this.handleErrors))
       )
-    // return this.fileUploadService.uploadFormData(files, subUrl, product)
-    //   .pipe(
-    //     (catchError(this.handleErrors))
-    //   )
   }
 
   getAllProducts(): Observable<ServerResponseDto> {
