@@ -21,15 +21,14 @@ export class FileUploadService {
 
     // append every key/value in payload to formData
     for (let [key, value] of Object.entries(payLoad)) {
-       if (typeof value == 'string') {
-         formData.set(key, value)
-       }
+      if (typeof value == 'string') {
+        formData.set(key, value)
+      }
     }
     // attach files to form Data
     payLoad.files.forEach((file: any) => {
       formData.append(`files`, file, file.name);
     });
-
     // log form data
     return this.http.post<ServerResponseDto>(url, formData)
       .pipe(

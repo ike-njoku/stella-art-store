@@ -1,1 +1,46 @@
-<p>update-product works!</p>
+<div  *ngIf="selectedProduct" class="grid">
+  <div class="card col-5 col-sm-full">
+    <div class="text-right">
+      {{selectedProduct.isOnSale}}
+      <label for="productIsOnSale">On Sale
+        <input
+        (ngModelChange)="placeProductOnSale()"
+        [(ngModel)]="selectedProduct.isOnSale"
+        [value]="button.value"
+        *ngFor="let button of radioButtons"
+        name="productIsOnSale" type="radio">
+      </label>
+    </div>
+    <h2>Update Product</h2>
+    <div class="pad-1 mg-1 display-inline" *ngFor="let image of selectedProduct.files">
+      <span (click)="deleteFile(image)" style="float:right; cursor: pointer;" class="mdi mdi-close-circle"></span>
+      <img class="rad-360" style="height: 40px;width: 40px;"  src="{{apiBase}}/{{image.filename}}" alt="">
+    </div>
+    <form [formGroup]="updateProductForm" class="grid">
+      <div *ngIf="selectedFileData" class="col-12 pad-2 text-center">
+        <img height="40" width="40" *ngFor="let url of selectedFileData" src="{{url}}" alt=""
+          class="col-3 rad-360 mg-2">
+      </div>
+      <input [(ngModel)]="selectedProduct.name" formControlName="name" class="col-12" type="text" placeholder="Product Name / Title">
+      <select formControlName="category" class="col-12" name="" id="">
+        <option>category</option>
+      </select>
+      <select formControlName="collectionName" class="col-12" name="" id="">
+        <option>Collection</option>
+      </select>
+      <input [(ngModel)]="selectedProduct.dimensions" formControlName="dimensions" class="col-12" type="text" placeholder="Dimensions">
+      <input [(ngModel)]="selectedProduct.quantity" formControlName="quantity" class="col-12" type="text" placeholder="quantity">
+      <input [(ngModel)]="selectedProduct.discountPrice" formControlName="discountPrice" class="col-12" type="text" placeholder="Discount Price">
+      <input [(ngModel)]="selectedProduct.price" formControlName="price" class="col-12" type="text" placeholder="Price in Dollars">
+      <textarea [(ngModel)]="selectedProduct.inspiration" formControlName="inspiration" class="col-12" name="" id="" cols="30" rows="2"
+        placeholder="Inspiration for Art"></textarea>
+      <textarea [(ngModel)]="selectedProduct.materials" formControlName="materials" class="col-12" name="" id="" cols="30" rows="2"
+        placeholder="Materials"></textarea>
+      <textarea [(ngModel)]="selectedProduct.description" formControlName="description" class="col-12" name="" id="" cols="30" rows="2"
+        placeholder="Description"></textarea>
+      <input  type="button" class="col-12" (click)="fileInput.click()" value="Upload File(s)">
+      <input formControlName="files" (change)="selectFiles($event)" #fileInput hidden type="file" multiple>
+      <input *ngIf="!submitting || updateProductForm.valid" class="col-12" (click)="updateProduct()" type="button" value="Update Product">
+    </form>
+  </div>
+</div>

@@ -5,11 +5,12 @@ export interface GetProductDto {
   description: string;
   dimensions: string;
   discountPrice: number;
+  inspiration: string;
   materials: string;
   name: string;
   price: number;
   quantity: number;
-  isOnSale?: boolean;
+  isOnSale: boolean;
   __v: number;
   _id: string;
   files: GetFileDTO[];

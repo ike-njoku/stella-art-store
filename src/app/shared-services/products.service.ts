@@ -21,6 +21,22 @@ export class ProductsService {
   createProduct(newProduct: CreateProductDTO, files: File[]): Observable<any> {
     const subUrl = 'products/create';
     return this.fileUploadService.uploadFormData(files, subUrl, newProduct)
+      .pipe(
+        (catchError(this.handleErrors))
+      )
+  }
+
+
+  updateProduct(product: GetProductDto, files: File[]): Observable<any> {
+    const subUrl = `products/${product._id}`;
+    return this.http.put(`${environment.apiBaseUrl}/${subUrl}`, product)
+      .pipe(
+        (catchError(this.handleErrors))
+      )
+    // return this.fileUploadService.uploadFormData(files, subUrl, product)
+    //   .pipe(
+    //     (catchError(this.handleErrors))
+    //   )
   }
 
   getAllProducts(): Observable<ServerResponseDto> {
