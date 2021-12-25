@@ -35,8 +35,8 @@ export class UpdateProductComponent implements OnInit {
   });
 
   radioButtons = [
-    {value: true},
-    {value: false}
+    { value: true },
+    { value: false }
   ];
 
   constructor(
@@ -44,7 +44,6 @@ export class UpdateProductComponent implements OnInit {
     private route: ActivatedRoute,
     private popUpService: PopUpNotificationService,
     private formBuilder: FormBuilder,
-    private fileUploadService: FileUploadService
   ) { }
 
   ngOnInit(): void {
@@ -54,7 +53,6 @@ export class UpdateProductComponent implements OnInit {
   deleteFile(file: any) {
     this.selectedProduct.files.splice(this.selectedProduct.files.indexOf(file), 1);
   }
-
 
   productId!: string;
   selectedProduct!: GetProductDto;
@@ -67,15 +65,10 @@ export class UpdateProductComponent implements OnInit {
         .subscribe(
           (response: ServerResponseDto) => {
             this.selectedProduct = response.data;
-            console.log(this.selectedProduct)
           },
           (error: string) => this.popUpService.addNotification(error, 5000)
         )
     }
-  }
-
-  placeProductOnSale() {
-    console.log(this.selectedProduct)
   }
 
   selectFiles(event: any) {
@@ -103,7 +96,6 @@ export class UpdateProductComponent implements OnInit {
     this.productService.updateProduct(this.selectedProduct, this.selectedFiles)
       .subscribe(
         (response: ServerResponseDto) => {
-          console.log(response)
           if (response.status == 'success') {
             this.popUpService.addNotification(response.message, 5000);
             this.updateProductForm.reset();

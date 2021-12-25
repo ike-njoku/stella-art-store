@@ -4,7 +4,6 @@
       {{selectedProduct.isOnSale}}
       <label for="productIsOnSale">On Sale
         <input
-        (ngModelChange)="placeProductOnSale()"
         [(ngModel)]="selectedProduct.isOnSale"
         [value]="button.value"
         *ngFor="let button of radioButtons"
