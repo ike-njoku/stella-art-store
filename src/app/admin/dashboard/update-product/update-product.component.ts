@@ -51,7 +51,21 @@ export class UpdateProductComponent implements OnInit {
   }
 
   deleteFile(file: any) {
-    this.selectedProduct.files.splice(this.selectedProduct.files.indexOf(file), 1);
+    this.productService.removeFileFromProduct(file, this.selectedProduct._id)
+      .subscribe(
+        (response: ServerResponseDto) => {
+          if (response.status == 'success') {
+            this.selectedProduct.files.splice(this.selectedProduct.files.indexOf(file), 1);
+            this.popUpService.addNotification(response.message, 5000)
+          }
+          else {
+            this.popUpService.addNotification(response.message, 5000)
+          }
+        },
+        (error: string) => {
+          this.popUpService.addNotification(error, 5000)
+        }
+      )
   }
 
   productId!: string;
@@ -98,7 +112,6 @@ export class UpdateProductComponent implements OnInit {
         (response: ServerResponseDto) => {
           if (response.status == 'success') {
             this.popUpService.addNotification(response.message, 5000);
-            this.updateProductForm.reset();
             this.submitting = false;
           }
           else {

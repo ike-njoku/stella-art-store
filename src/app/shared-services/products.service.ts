@@ -5,8 +5,14 @@ import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { FileUploadService } from '../admin/file-upload.service';
 import { CreateProductDTO } from '../shared-interfaces/create-product-dto';
+import { GetFileDTO } from '../shared-interfaces/get-file-dto';
 import { ServerResponseDto } from '../shared-interfaces/server-response-dto';
 import { GetProductDto } from './get-product-dto';
+
+export interface DeleteProductFileDTO {
+  file: GetFileDTO,
+  productId: string,
+}
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +27,19 @@ export class ProductsService {
   createProduct(newProduct: CreateProductDTO, files: File[]): Observable<any> {
     const subUrl = 'products/create';
     return this.fileUploadService.uploadFormData(files, subUrl, newProduct)
+      .pipe(
+        (catchError(this.handleErrors))
+      )
+  }
+
+  removeFileFromProduct(file: GetFileDTO, productId: string): Observable<ServerResponseDto> {
+    const payLoad: DeleteProductFileDTO = {
+      file: file,
+      productId: productId
+    };
+
+    const suburl = 'products/remove-file';
+    return this.http.post<ServerResponseDto>(`${environment.apiBaseUrl}/${suburl}`, payLoad)
       .pipe(
         (catchError(this.handleErrors))
       )
