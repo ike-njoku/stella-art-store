@@ -29,7 +29,7 @@ export class CartComponent implements OnInit {
   }
 
   goToShop() {
-    this.router.navigate(['shop'])
+    this.router.navigate(['/shop'])
   }
 
   ngOnInit(): void {
