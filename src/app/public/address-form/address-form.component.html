@@ -1,6 +1,6 @@
 <div id="side-nav" class="text-center">
   <div class="mg-b-8 text-right">
-    <span style="cursor: pointer;" class="mdi mdi-cart"></span>
+    <span (click)="goToCart()" style="cursor: pointer;" class="mdi mdi-cart"> {{cartService.cartTotal | currency}}</span>
   </div>
   <div style="color: green;" class="mg-b-8 text-right font-bold"></div>
   <h2>
@@ -13,16 +13,21 @@
         (click)="cartService.calculateCartTotal(); this.orderService.storeDeliveryAddress(deliveryAddressForm.value);  payWithPayStack()"
         class="col-12 mg-t-2 mg-b-2 pad-4 rad-10 primary-button"> Pay </button>
     </form>
-    <button style="background-color: white;" class="col-12 mg-t-2 mg-b-2 pad-4 rad-10"> Back </button>
+    <button (click)="goToCart()" style="background-color: white;" class="col-12 mg-t-2 mg-b-2 pad-4 rad-10"> Back </button>
   </div>
   <div class="mg-t-10 text-left">
-    <h4>Dimensions:</h4>
+    <h4>Pay With Paystack:</h4>
   </div>
   <div class="mg-t-10 text-left">
-    <h4>Materials:</h4>
-  </div>
-  <div class="mg-t-10 text-left">
-    <h4>Descsription:</h4>
+    <h4>Products:</h4>
+    <div class="grid">
+      <a style="text-decoration: none;" href="product/{{product._id}}" class="col-3" *ngFor="let product of cartService.productsInCart">
+        <img  style="height: 40px; width: 40px;" src="{{apiBaseUrl}}/{{product.files[0].filename}}" alt="">
+        <span class="font-smaller">
+          {{product.name}}
+        </span>
+      </a>
+    </div>
   </div>
 </div>
 

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/shared-services/cart.service';
 import { OrderService } from 'src/app/shared-services/order.service';
 import { PayWithPaypalService } from 'src/app/shared-services/pay-with-paypal.service';
 import { PayWithPaystackService } from 'src/app/shared-services/pay-with-paystack.service';
+import { environment } from 'src/environments/environment';
 import { AddressHelperService, getCountriesDTO, getStateDTO } from './address-helper.service';
 
 @Component({
@@ -19,11 +21,19 @@ export class AddressFormComponent implements OnInit {
     public cartService: CartService,
     private payPalService: PayWithPaypalService,
     private payStackService: PayWithPaystackService,
-    public orderService: OrderService
+    public orderService: OrderService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.getAllCountries();
+    this.cartService.calculateCartTotal();
+  }
+
+  public readonly apiBaseUrl: string = environment.apiBaseUrl;
+
+  goToCart() {
+    return this.router.navigate(['checkout/cart']);
   }
 
   deliveryAddressForm: FormGroup = this.formBuilder.group({
