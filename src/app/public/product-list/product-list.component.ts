@@ -6,6 +6,9 @@ import { CartService } from 'src/app/shared-services/cart.service';
 import { GetProductDto } from 'src/app/shared-services/get-product-dto';
 import { ProductsService } from 'src/app/shared-services/products.service';
 import { environment } from 'src/environments/environment';
+export interface ProductSearchFilters {
+  filter: string,
+};
 
 @Component({
   selector: 'app-product-list',
@@ -13,8 +16,15 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-
+  searchString: string = '';
   allProducts!: GetProductDto[];
+  productsFiltrates: GetProductDto[] = [];
+  selectedFilter = 'Name';
+  filters: ProductSearchFilters[] = [
+    {filter: 'Name'},
+    {filter: 'category'},
+    {filter: 'Materials Used'}
+  ];
   public readonly baseUrl: string = environment.apiBaseUrl;
   constructor(
     private productsService: ProductsService,
@@ -32,6 +42,31 @@ export class ProductListComponent implements OnInit {
     this.getAllProducts();
   }
 
+  search(searchString: string) {
+    if (searchString.length < 1) {
+      this.productsFiltrates = this.allProducts;
+    }
+    else {this.searchString = searchString};
+
+    if (this.selectedFilter == 'Category') {
+      this.productsFiltrates = this.allProducts.filter(
+        (product) => product.category.toLowerCase().includes(searchString.toLowerCase())
+      );
+    }
+
+    if (this.selectedFilter == 'Name') {
+      this.productsFiltrates = this.allProducts.filter(
+        (product) => product.name.toLowerCase().includes(searchString.toLowerCase())
+      );
+    }
+
+    if (this.selectedFilter == 'Materials Used') {
+      this.productsFiltrates = this.allProducts.filter(
+        (product) => product.materials.toLowerCase().includes(searchString.toLowerCase())
+      );
+    }
+  }
+
   goToCart() {
     return this.router.navigate(['checkout/cart'])
   }
@@ -47,6 +82,7 @@ export class ProductListComponent implements OnInit {
           console.log(response)
           if (response.status == 'success') {
             this.allProducts = response.data;
+            this.productsFiltrates = response.data;
           }
           if (response.status == 'fail') {
             this.popUpService.addNotification(response.message, 5000)
