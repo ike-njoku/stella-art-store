@@ -1,10 +1,9 @@
-<div class="grid mg-b-4 card mg-2"></div>
 <div class="grid pad-2">
   <div class="col-7 grid col-sm-full">
     <div class="col-6 card pad-5 mg-2">
       <h2>Collection</h2>
       <div>
-        <button  style="height: 70px; width: 70px"class="rad-360">
+        <button style="height: 70px; width: 70px" class="rad-360">
           +
         </button>
         <button style="height: 70px; width: 70px" class="rad-360">
@@ -15,7 +14,7 @@
     <div class="col-6 card pad-5 mg-2">
       <h2>Category</h2>
       <div>
-        <button  style="height: 70px; width: 70px"class="rad-360">
+        <button style="height: 70px; width: 70px" class="rad-360">
           +
         </button>
         <button style="height: 70px; width: 70px" class="rad-360">
@@ -23,20 +22,9 @@
         </button>
       </div>
     </div>
-    <div class="col-6 card pad-5 mg-2">
-      <h2>Product List</h2>
-    </div>
-    <div class="col-6 card pad-5 mg-2">
-      <h2>Gallery</h2>
-      <div>
-        <button  style="height: 70px; width: 70px"class="rad-360">
-          +
-        </button>
-        <button style="height: 70px; width: 70px" class="rad-360">
-          -
-        </button>
-      </div>
-    </div>
+    <!-- <div style="height: 600px; overflow-y: scroll;" class="col-12 card pad-5 mg-2"> -->
+      <!-- <app-product-list></app-product-list> -->
+    <!-- </div> -->
   </div>
   <div class="card col-5 col-sm-full">
     <h2>Create New Product</h2>
@@ -64,8 +52,8 @@
         placeholder="Description"></textarea>
       <input type="button" class="col-12" (click)="fileInput.click()" value="Upload File(s)">
       <input formControlName="files" (change)="selectFiles($event)" #fileInput hidden type="file" multiple>
-      <input *ngIf="!submitting || createProductForm.valid" class="col-12" (click)="createProduct()" type="button" value="Create Product">
+      <input *ngIf="!submitting || createProductForm.valid" class="col-12" (click)="createProduct()" type="button"
+        value="Create Product">
     </form>
   </div>
 </div>
-

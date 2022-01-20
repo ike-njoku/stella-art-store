@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PopUpNotificationService } from 'src/app/pop-up-notification/pop-up-notification.service';
 import { ServerResponseDto } from 'src/app/shared-interfaces/server-response-dto';
+import { GetProductDto } from 'src/app/shared-services/get-product-dto';
 import { ProductsService } from 'src/app/shared-services/products.service';
 
 @Component({
