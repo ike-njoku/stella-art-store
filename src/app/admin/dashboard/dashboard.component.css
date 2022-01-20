@@ -8,6 +8,13 @@
   text-align: center;
 }
 
+.sign-out {
+  position: absolute;
+  bottom: 10%;
+  background-color: white;
+  width: 80%;
+}
+
 #avatar {
   height: calc(100vw/8);
   width: calc(100vw/8);
