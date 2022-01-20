@@ -23,7 +23,9 @@ export class ProductListComponent implements OnInit {
   filters: ProductSearchFilters[] = [
     {filter: 'Name'},
     {filter: 'category'},
+    {filter: 'Collection Name'},
     {filter: 'Materials Used'}
+
   ];
   public readonly baseUrl: string = environment.apiBaseUrl;
   constructor(
@@ -63,6 +65,12 @@ export class ProductListComponent implements OnInit {
     if (this.selectedFilter == 'Materials Used') {
       this.productsFiltrates = this.allProducts.filter(
         (product) => product.materials.toLowerCase().includes(searchString.toLowerCase())
+      );
+    }
+
+    if (this.selectedFilter == 'Collection Name') {
+      this.productsFiltrates = this.allProducts.filter(
+        (product) => product.collectionName.toLowerCase().includes(searchString.toLowerCase())
       );
     }
   }
