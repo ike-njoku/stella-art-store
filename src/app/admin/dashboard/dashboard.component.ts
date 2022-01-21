@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GetProductDto } from 'src/app/shared-services/get-product-dto';
+import { OrderService } from 'src/app/shared-services/order.service';
 import { ProductsService } from 'src/app/shared-services/products.service';
 import { AuthService } from '../auth/auth.service';
+import { GetOrderDTO } from './orders/orders.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,15 +13,17 @@ import { AuthService } from '../auth/auth.service';
 })
 export class DashboardComponent implements OnInit {
   allProducts: GetProductDto[] = [];
-
+  allOrders: GetOrderDTO[] = [];
   constructor(
     private authService: AuthService,
     private router: Router,
-    private productService: ProductsService
+    private productService: ProductsService,
+    private orderService: OrderService
   ) { }
 
   ngOnInit(): void {
     this.getAllProducts();
+    this.getAllOrders();
   }
 
   signOut() {
@@ -32,6 +36,15 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         (response) => {
           this.allProducts =response.data;
+        }
+      )
+  }
+
+  getAllOrders() {
+    this.orderService.getAllOrders()
+      .subscribe(
+        (response) => {
+          this.allOrders = response.data;
         }
       )
   }

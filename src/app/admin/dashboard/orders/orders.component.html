@@ -1,0 +1,26 @@
+<div *ngFor="let order of allOrders.reverse()" class="card mg-t-3">
+  <div class="mg-t-2">
+    <b>
+      Date:
+    </b>
+    {{order.timeStamp | date: 'full'}}
+  </div>
+  <div class="mg-t-2">
+    <b>
+      Order Id:
+    </b>
+    {{order._id}}
+  </div>
+  <div class="mg-t-2">
+    <b>
+      Transaction Reference:
+    </b>
+    {{order.transactionReference}}
+  </div>
+  <div class="mg-t-2">
+    <b>
+      Deliver To:
+    </b>
+    {{order.deliveryAddress.country}}
+  </div>
+</div>
