@@ -3,3 +3,7 @@
   padding: 5%;
   border-radius: 7px;
 }
+
+.card a {
+  color: white;
+}

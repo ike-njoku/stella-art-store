@@ -23,4 +23,11 @@
     </b>
     {{order.deliveryAddress.country}}
   </div>
+  <div class="mg-t-5 text-right">
+    <button (click)="viewSingleOrder(order)" class="primary-button-small">View</button>
+  </div>
+</div>
+
+<div *ngIf="allOrders.length < 1" class="card pad-5">
+  <h4>You have no Orders Yet</h4>
 </div>

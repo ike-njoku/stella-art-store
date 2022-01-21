@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PopUpNotificationService } from 'src/app/pop-up-notification/pop-up-notification.service';
 import { DeliveryAdddress } from 'src/app/shared-interfaces/create-order-dto';
 import { GetProductDto } from 'src/app/shared-services/get-product-dto';
@@ -22,11 +23,17 @@ export class OrdersComponent implements OnInit {
   allOrders: GetOrderDTO[] = [];
   constructor(
     private ordersService: OrderService,
-    private popUpService: PopUpNotificationService
+    private popUpService: PopUpNotificationService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.getAllOrders();
+  }
+
+  viewSingleOrder(order: GetOrderDTO) {
+    this.router.navigate([`../${order._id}`], {relativeTo: this.route})
   }
 
   getAllOrders() {
