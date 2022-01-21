@@ -1,6 +1,8 @@
 .side-nav {
   background-color: #1D2546;
+  /* background-color: #caf0f8; */
   color: white;
+  /* color: black; */
   width: 20%;
   height: 100vh;
   position: fixed;

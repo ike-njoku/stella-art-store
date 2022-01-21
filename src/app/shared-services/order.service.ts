@@ -47,6 +47,14 @@ export class OrderService {
       )
   }
 
+  getOrderById(id: string |null): Observable<ServerResponseDto> {
+    const subUrl = `orders/${id}`;
+    return this.http.get<ServerResponseDto>(`${environment.apiBaseUrl}/${subUrl}`)
+      .pipe(
+        (catchError(this.handleError))
+      )
+  }
+
   handleError(error: any) {
     console.log(error);
     return throwError('Could not post your order')

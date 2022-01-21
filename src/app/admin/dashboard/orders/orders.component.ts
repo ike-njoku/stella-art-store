@@ -4,7 +4,7 @@ import { PopUpNotificationService } from 'src/app/pop-up-notification/pop-up-not
 import { DeliveryAdddress } from 'src/app/shared-interfaces/create-order-dto';
 import { GetProductDto } from 'src/app/shared-services/get-product-dto';
 import { OrderService } from 'src/app/shared-services/order.service';
-
+export type OrderStatus = 'shipped' | 'cancelled' | 'completed' | 'confirmed';
 export interface GetOrderDTO {
   deliveryAddress: DeliveryAdddress;
   products: GetProductDto[];
@@ -12,6 +12,7 @@ export interface GetOrderDTO {
   timeStamp: number,
   __v: number,
   _id: string,
+  status: OrderStatus,
 }
 
 @Component({
