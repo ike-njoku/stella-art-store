@@ -107,6 +107,7 @@ export class UpdateProductComponent implements OnInit {
 
   updateProduct() {
     this.submitting = true;
+    console.log(this.selectedProduct.isOnSale);
     this.productService.updateProduct(this.selectedProduct, this.selectedFiles)
       .subscribe(
         (response: ServerResponseDto) => {

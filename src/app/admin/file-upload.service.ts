@@ -30,6 +30,9 @@ export class FileUploadService {
       formData.append(`files`, file, file.name);
     });
     // log form data
+    formData.set('isOnSale', payLoad.isOnSale);
+
+
     return this.http.post<ServerResponseDto>(url, formData)
       .pipe(
         (catchError(this.handleError))
