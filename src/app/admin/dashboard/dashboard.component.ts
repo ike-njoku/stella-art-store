@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GetProductDto } from 'src/app/shared-services/get-product-dto';
 import { OrderService } from 'src/app/shared-services/order.service';
 import { ProductsService } from 'src/app/shared-services/products.service';
@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
+    private route: ActivatedRoute,
     private productService: ProductsService,
     private orderService: OrderService
   ) { }
@@ -47,5 +48,12 @@ export class DashboardComponent implements OnInit {
           this.allOrders = response.data;
         }
       )
+  }
+
+  navigate(url: string, options?: any) {
+    if (options) {
+      return this.router.navigate([url], {relativeTo: this.route})
+    }
+    else return this.router.navigate([url])
   }
 }
