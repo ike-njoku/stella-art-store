@@ -1,4 +1,5 @@
 import { GetFileDTO } from "../shared-interfaces/get-file-dto";
+export type isOnSale = 'true' | 'false'
 export interface GetProductDto {
   category: string;
   collectionName: string;
@@ -10,7 +11,7 @@ export interface GetProductDto {
   name: string;
   price: number;
   quantity: number;
-  isOnSale: boolean;
+  isOnSale: isOnSale;
   __v: number;
   _id: string;
   files: GetFileDTO[];

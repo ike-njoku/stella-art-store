@@ -75,7 +75,15 @@
             </select>
           </td>
           <td>{{product.dimensions}}</td>
-          <td>{{product.price | currency}}</td>
+          <td>
+            <span *ngIf="product.isOnSale == 'true'; else isNotOnSale">
+              <del class="font-small">{{product.price | currency}}</del>
+            {{product.discountPrice | currency}}
+            </span>
+            <ng-template #isNotOnSale>
+              {{product.price | currency}}
+            </ng-template>
+          </td>
         </tr>
       </tbody>
     </table>

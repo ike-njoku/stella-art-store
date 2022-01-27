@@ -60,7 +60,7 @@ export class CartService {
     });
 
     this.productsInCart.forEach((product) => {
-      if (product.isOnSale == true) {
+      if (product.isOnSale == 'true') {
         this.cartTotal += product.discountPrice
       }
       else this.cartTotal += product.price

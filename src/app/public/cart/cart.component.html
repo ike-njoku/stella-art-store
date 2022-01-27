@@ -9,7 +9,8 @@
   </div>
   <div class="mg-t-10 grid">
     <button (click)="checkOut()" class="col-12 mg-t-2 mg-b-2 pad-4 rad-10 primary-button"> Checkout </button>
-    <button (click)="goToShop()" style="background-color: white;" class="col-12 mg-t-2 mg-b-2 pad-4 rad-10"> Shop </button>
+    <button (click)="goToShop()" style="background-color: white;" class="col-12 mg-t-2 mg-b-2 pad-4 rad-10"> Shop
+    </button>
   </div>
   <div class="mg-t-10 text-left">
     <h4>Dimensions:</h4>
@@ -55,9 +56,18 @@
           </select>
         </td>
         <td>{{product.dimensions}}</td>
-        <td>{{product.price | currency}}</td>
         <td>
-          <span style="cursor: pointer;" (click)="cartService.removeProductFromCart(product)" class="mdi mdi-close-circle-outline"></span>
+          <span *ngIf="product.isOnSale == 'true'; else productIsNotOnSale">
+            <del class="font-small" style="color: red">{{product.price | currency}}</del>
+            {{product.discountPrice | currency}}
+          </span>
+          <ng-template #productIsNotOnSale>
+            {{product.price | currency}}
+          </ng-template>
+        </td>
+        <td>
+          <span style="cursor: pointer;" (click)="cartService.removeProductFromCart(product)"
+            class="mdi mdi-close-circle-outline"></span>
         </td>
       </tr>
     </tbody>
