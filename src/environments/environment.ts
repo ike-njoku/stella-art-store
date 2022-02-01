@@ -4,6 +4,7 @@
 
 export const environment = {
   apiBaseUrl: 'http://localhost:3000',
+  paypalUrl: 'https://api-m.sandbox.paypal.com/v1/oauth2/token',
   production: false
 };
 

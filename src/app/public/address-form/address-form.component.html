@@ -1,4 +1,5 @@
 <div id="side-nav" class="text-center">
+  <button (click)="payWithPayPal()"> Paypal</button>
   <div class="mg-b-8 text-right">
     <span (click)="goToCart()" style="cursor: pointer; color: green;" class="mdi mdi-cart"> {{cartService.cartTotal | currency}}</span>
   </div>

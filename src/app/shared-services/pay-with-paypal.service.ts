@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,9 @@ export class PayWithPaypalService {
     let body = new URLSearchParams();
     body.set('grant_type', 'client_credentials');
     let headers = new HttpHeaders({
-      'Authorization': 'Basic ' + 'QVE1QzRKWmlXcF9lZU5WVlJDcjNyQjdsREFDMjBWS0FXMVpZZGNudkZiTUFwUngyN1BFNUhNSnNkc2hnYXdSaTRuOFVzdDVBSnFScE9UcnQ6RVBpMzhKVm5YbDNnRkFhT2NncUg0OVU0dzU1MHkwZnc1ZHU0ZktJMXR1R3RqcG5rZVgtekgxemJFS2w0QS1RcFJGWGZKNW8zSUZrRWJaekw='
+      'Authorization': 'Basic ' + 'QVptcXFlMDRVMHctMktXWEtEVS1qQkMzUW1YTnlrOUVyVDM1MXJOdFg0a0Uxamtua19RZDFKV1QzVUwtMmt6YTU1eFkyZlZ6bHFiazFLeG06RUJ0QkR2RkFYWk5MX29HQXNoWmpVTUZOcU81V3ZpTjhQUzdRcWtJZEFqQng1bHY3VGZvaVVGSHNMMjlONDQ4dzV0ZUY5SWNPMXdQZzNtOG8='
     });
-    const url = 'https://api-m.sandbox.paypal.com/v1/oauth2/token';
+    const url = environment.paypalUrl;
     return this.http.post<any>(url, body, {
       headers: headers
     })
@@ -34,7 +35,7 @@ export class PayWithPaypalService {
         {
           "amount": {
             "currency_code": "USD",
-            "value": "100.00"
+            "value": "1.00"
           }
         }
       ]

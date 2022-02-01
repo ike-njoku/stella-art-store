@@ -106,33 +106,33 @@ export class AddressFormComponent implements OnInit {
       )
   }
 
-  payWithStripe() {
-    this.cartService.calculateCartTotal();
-    if(!window.document.getElementById('stripe-script')) {
-      var s = window.document.createElement("script");
-      s.id = "stripe-script";
-      s.type = "text/javascript";
-      s.src = "https://checkout.stripe.com/checkout.js";
-      window.document.body.appendChild(s);
-    }
+  // payWithStripe() {
+  //   this.cartService.calculateCartTotal();
+  //   if(!window.document.getElementById('stripe-script')) {
+  //     var s = window.document.createElement("script");
+  //     s.id = "stripe-script";
+  //     s.type = "text/javascript";
+  //     s.src = "https://checkout.stripe.com/checkout.js";
+  //     window.document.body.appendChild(s);
+  //   }
 
-    var handler = (<any>window).StripeCheckout.configure({
-      key: 'pk_test_51K3BC0CNWuH7c4sCiCiuWCtmiBJphDqcoRiNvTzaIhWc6pvBx5ptDCuK6rCH4aV1IcfFE42wzTIpg2NEcWJQFlcK00NYlkIMFk',
-      locale: 'auto',
-      token: function (token: any) {
-        // You can access the token ID with `token.id`.
-        // Get the token ID to your server-side code for use.
-        console.log(token)
-        alert('Token Created!!');
-      }
-    });
+  //   var handler = (<any>window).StripeCheckout.configure({
+  //     key: 'pk_test_51K3BC0CNWuH7c4sCiCiuWCtmiBJphDqcoRiNvTzaIhWc6pvBx5ptDCuK6rCH4aV1IcfFE42wzTIpg2NEcWJQFlcK00NYlkIMFk',
+  //     locale: 'auto',
+  //     token: function (token: any) {
+  //       // You can access the token ID with `token.id`.
+  //       // Get the token ID to your server-side code for use.
+  //       console.log(token)
+  //       alert('Token Created!!');
+  //     }
+  //   });
 
-    handler.open({
-      // name: 'Stella Arts Store',
-      // description: '...',
-      amount: this.cartService.cartTotal * 100
-    });
-  }
+  //   handler.open({
+  //     // name: 'Stella Arts Store',
+  //     // description: '...',
+  //     amount: this.cartService.cartTotal * 100
+  //   });
+  // }
 
   payWithPayStack() {
     this.payStackService.initializePayment(this.deliveryAddressForm.controls.emailAddress.value)
@@ -141,6 +141,15 @@ export class AddressFormComponent implements OnInit {
           console.table(response)
         }
       )
+  }
+
+  payWithPayPalButton() {
+    this.createPayPalScript();
+  }
+
+  createPayPalScript() {
+    let scriptTag = document.createElement('script');
+    scriptTag.src = "https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&components=buttons";
   }
 
   payWithPayPal() {
