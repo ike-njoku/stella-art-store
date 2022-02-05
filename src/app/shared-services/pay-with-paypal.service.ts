@@ -43,7 +43,7 @@ export class PayWithPaypalService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer '+ authorizationString
     });
-    const url = 'https://api-m.sandbox.paypal.com/v2/checkout/orders';
+    const url = environment.paypalUrl;
     return this.http.post<any>(url, paymentDetails, {headers: headers})
       .pipe(
         (catchError(this.handleError))
