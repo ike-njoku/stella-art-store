@@ -17,7 +17,7 @@ export class PayWithPaypalService {
     let body = new URLSearchParams();
     body.set('grant_type', 'client_credentials');
     let headers = new HttpHeaders({
-      'Authorization': 'Basic ' + 'QVptcXFlMDRVMHctMktXWEtEVS1qQkMzUW1YTnlrOUVyVDM1MXJOdFg0a0Uxamtua19RZDFKV1QzVUwtMmt6YTU1eFkyZlZ6bHFiazFLeG06RUJ0QkR2RkFYWk5MX29HQXNoWmpVTUZOcU81V3ZpTjhQUzdRcWtJZEFqQng1bHY3VGZvaVVGSHNMMjlONDQ4dzV0ZUY5SWNPMXdQZzNtOG8='
+      'Authorization': 'Basic ' + environment.paypalParams
     });
     const url = environment.paypalUrl;
     return this.http.post<any>(url, body, {

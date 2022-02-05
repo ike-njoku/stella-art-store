@@ -22,10 +22,7 @@ export class AppComponent implements OnInit {
 
   public pageHasLoaded: boolean = false;
   ngOnInit(): void {
-    console.table({
-      Live: environment.production,
-      url: environment.apiBaseUrl
-    });
+    console.table(environment);
 
     this.checkPageLoad();
     this.addInterval()

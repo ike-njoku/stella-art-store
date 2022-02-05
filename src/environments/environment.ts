@@ -5,6 +5,7 @@
 export const environment = {
   apiBaseUrl: 'http://localhost:3000',
   paypalUrl: 'https://api-m.sandbox.paypal.com/v1/oauth2/token',
+  paypalParams: 'QVp3TENOYnFDd2Q5aF9QeUd6Sk5SRkFYYkJuMVgyYVVVMWppOV9jUXdOOXFLRV9sbDVXMkQzaW1od08yTHk1czRuMlNOU09WQ19zMXJnWk86RVBZOWR5dlJUTEFlYXQwbzhfQ2RuYUJwT1B2S2RyRjM2eDdCSWlFaGFkclkwVWNqWTRVLXJYUUw5Zkc1SzA5QWgtbmViLUpIZjQ5R0I2eWY=',
   production: false
 };
 
