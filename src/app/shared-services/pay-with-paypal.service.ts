@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -47,6 +47,7 @@ export class PayWithPaypalService {
     console.log(authorizationString);
     return this.http.post<any>(url, paymentDetails, {headers: headers})
       .pipe(
+        tap((response) => {console.table(response)}),
         (catchError(this.handleError))
       )
   }
