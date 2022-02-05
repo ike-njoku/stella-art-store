@@ -44,6 +44,7 @@ export class PayWithPaypalService {
       'Authorization': 'Bearer '+ authorizationString
     });
     const url = environment.paypalUrl;
+    console.log(authorizationString);
     return this.http.post<any>(url, paymentDetails, {headers: headers})
       .pipe(
         (catchError(this.handleError))
