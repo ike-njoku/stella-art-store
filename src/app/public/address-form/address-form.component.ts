@@ -143,15 +143,6 @@ export class AddressFormComponent implements OnInit {
       )
   }
 
-  payWithPayPalButton() {
-    this.createPayPalScript();
-  }
-
-  createPayPalScript() {
-    let scriptTag = document.createElement('script');
-    scriptTag.src = "https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&components=buttons";
-  }
-
   payWithPayPal() {
     this.payPalService.getAuthToken()
       .subscribe(
