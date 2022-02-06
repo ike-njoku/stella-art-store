@@ -1,5 +1,4 @@
 <div id="side-nav" class="text-center">
-  <button (click)="payWithPayPal()"> Paypal</button>
   <div class="mg-b-8 text-right">
     <span (click)="goToCart()" style="cursor: pointer; color: green;" class="mdi mdi-cart"> {{cartService.cartTotal | currency}}</span>
   </div>
@@ -11,7 +10,8 @@
   <div class="mg-t-10 grid">
     <form action="" class="col-12 grid">
       <button
-        (click)="cartService.calculateCartTotal(); this.orderService.storeDeliveryAddress(deliveryAddressForm.value);  payWithPayStack()"
+        (click)="cartService.calculateCartTotal(); this.orderService.storeDeliveryAddress(deliveryAddressForm.value);
+        payWithPayPal();"
         class="col-12 mg-t-2 mg-b-2 pad-4 rad-10 primary-button"> Pay </button>
     </form>
     <button (click)="goToCart()" style="background-color: white;" class="col-12 mg-t-2 mg-b-2 pad-4 rad-10"> Back </button>

@@ -35,19 +35,22 @@ export class PayWithPaypalService {
         {
           "amount": {
             "currency_code": "USD",
-            "value": "1.00"
+            "value": "100.00"
           }
         }
       ]
     }
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer '+ authorizationString
+      'Authorization': 'Bearer ' + authorizationString
     });
     const url = environment.paypalUrl;
     console.log(authorizationString);
-    return this.http.post<any>(url, paymentDetails, {headers: headers})
+    return this.http.post<any>(url, paymentDetails, { headers: headers })
       .pipe(
-        tap((response) => {console.table(response)}),
+        tap((response) => {
+          console.table(response)
+        }
+        ),
         (catchError(this.handleError))
       )
   }
