@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/shared-services/cart.service';
 import { OrderService } from 'src/app/shared-services/order.service';
-import { GetPayPalAuthToken, GetPayPalPaymentLink, PayWithPaypalService } from 'src/app/shared-services/pay-with-paypal.service';
+import { GetPayPalAuthToken, GetPayPalPaymentLink, payPalLink, PayWithPaypalService } from 'src/app/shared-services/pay-with-paypal.service';
 import { PayWithPaystackService } from 'src/app/shared-services/pay-with-paystack.service';
 import { environment } from 'src/environments/environment';
 import { AddressHelperService, getCountriesDTO, getStateDTO } from './address-helper.service';
@@ -164,9 +164,15 @@ export class AddressFormComponent implements OnInit {
     this.payPalService.openPaymentWindow(authToken)
       .subscribe(
         (response: GetPayPalPaymentLink) => {
-          let link = response.links[1].href;
-          console.log(link);
-          window.open(link, '_blank')
+          response.links.forEach(
+            (object: payPalLink) => {
+              if (object.rel.includes('approve')) {
+                console.log(object);
+                window.open(object.href, '_blank')
+              }
+            }
+          )
+
         },
         (error: any) => {
           console.log(error)

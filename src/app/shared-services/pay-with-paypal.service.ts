@@ -59,7 +59,11 @@ export class PayWithPaypalService {
             "value": "0.30"
           }
         }
-      ]
+      ],
+      "redirect_urls": {
+        "return_url": "http://localhost:4200/checkout/success",
+        "cancel_url": "http://localhost:4200/checkout/success-"
+      }
     };
 
     let header = new HttpHeaders({
@@ -67,13 +71,13 @@ export class PayWithPaypalService {
     });
 
     const url = environment.payUrl;
-    return this.http.post<any>(url, paymentParams, {headers: header})
-    .pipe(
-      tap((response: any) => {
-        console.log(response)
-      }),
-      catchError(this.handleError)
-    )
+    return this.http.post<any>(url, paymentParams, { headers: header })
+      .pipe(
+        tap((response: any) => {
+          console.log(response)
+        }),
+        catchError(this.handleError)
+      )
   }
 
   private handleError(error: any) {
