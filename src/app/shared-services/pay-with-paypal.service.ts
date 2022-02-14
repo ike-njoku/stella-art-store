@@ -50,8 +50,6 @@ export class PayWithPaypalService {
   }
 
   openPaymentWindow(authToken: string): Observable<any> {
-    console.log('opening payment window');
-    console.log('authorization token '+ authToken);
     const paymentParams = {
       "intent": "CAPTURE",
       "purchase_units": [
