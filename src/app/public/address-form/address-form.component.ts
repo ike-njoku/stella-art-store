@@ -3,10 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/shared-services/cart.service';
 import { OrderService } from 'src/app/shared-services/order.service';
-import { PayWithPaypalService } from 'src/app/shared-services/pay-with-paypal.service';
+import { GetPayPalAuthToken, GetPayPalPaymentLink, PayWithPaypalService } from 'src/app/shared-services/pay-with-paypal.service';
 import { PayWithPaystackService } from 'src/app/shared-services/pay-with-paystack.service';
 import { environment } from 'src/environments/environment';
 import { AddressHelperService, getCountriesDTO, getStateDTO } from './address-helper.service';
+
 
 @Component({
   selector: 'app-address-form',
@@ -77,6 +78,7 @@ export class AddressFormComponent implements OnInit {
         (response: any) => {
           this.countryDialCode = response.data.dial_code;
           console.table(response.data)
+
         },
         (error: any) => console.log(error)
       )
@@ -144,26 +146,27 @@ export class AddressFormComponent implements OnInit {
   }
 
   payWithPayPal() {
+    console.log('generating auth token')
     this.payPalService.getAuthToken()
       .subscribe(
-        (response: any) => {
-          console.log(response)
-          if (response.scope) {
-          this.payPalService.makePayment(response.access_token)
-            .subscribe(
-              (response: any) => {
-                console.log(response)
-                response.links.forEach((link: any) => {
-                  if (link.rel == 'approve') {
-                    window.location.href = link.href;
-                  }
-                });
-              },
-              (error: any) => {
-                console.log(error)
-              }
-            )
-          }
+        (response: GetPayPalAuthToken) => {
+          console.log(response);
+            this.openPaymentLink(response.access_token);
+
+        },
+        (error: any) => {
+          console.table(error)
+        }
+      )
+  }
+
+  openPaymentLink(authToken: string) {
+    this.payPalService.openPaymentWindow(authToken)
+      .subscribe(
+        (response: GetPayPalPaymentLink) => {
+          let link = response.links[1].href;
+          console.log(link);
+          window.open(link, '_blank')
         },
         (error: any) => {
           console.log(error)
