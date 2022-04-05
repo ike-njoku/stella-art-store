@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NewPaypalPayService } from 'src/app/new-paypal-pay.service';
 import { CartService } from 'src/app/shared-services/cart.service';
 import { OrderService } from 'src/app/shared-services/order.service';
 import { GetPayPalAuthToken, GetPayPalPaymentLink, payPalLink, PayWithPaypalService } from 'src/app/shared-services/pay-with-paypal.service';
@@ -23,6 +24,7 @@ export class AddressFormComponent implements OnInit {
     private payPalService: PayWithPaypalService,
     private payStackService: PayWithPaystackService,
     public orderService: OrderService,
+    private newPaypal: NewPaypalPayService,
     private router: Router
   ) { }
 
@@ -178,6 +180,10 @@ export class AddressFormComponent implements OnInit {
           console.log(error)
         }
       )
+  }
+
+  newPaypalPay() {
+    this.newPaypal.pay(500)
   }
 }
 
