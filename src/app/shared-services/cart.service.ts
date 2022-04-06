@@ -8,7 +8,7 @@ import { OrderService } from './order.service';
   providedIn: 'root'
 })
 export class CartService {
-  productsInCart: GetProductDto[] = [];
+  productsInCart:GetProductDto[] = [];
   cartTotal: number = 0;
   constructor(
     private popUpService: PopUpNotificationService,
@@ -27,7 +27,7 @@ export class CartService {
     if (this.checkIfProductIsInCart(product)) {
       return this.popUpService.addNotification(`${product.name} is already in your cart`, 5000);
     }
-
+    product.cartQuantity = 1;
     let _product = JSON.stringify(product);
     localStorage.setItem(_product, _product);
     this.calculateCartTotal();
