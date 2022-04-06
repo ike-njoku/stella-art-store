@@ -70,18 +70,16 @@
             </div>
           </td>
           <td>
-            <select name="" id="">
-              <option></option>
-            </select>
+            {{product.cartQuantity}}
           </td>
           <td>{{product.dimensions}}</td>
           <td>
             <span *ngIf="product.isOnSale == 'true'; else isNotOnSale">
-              <del class="font-small">{{product.price | currency}}</del>
-            {{product.discountPrice | currency}}
+              <del class="font-small">{{product.price | currency: "NGN"}}</del>
+            {{product.discountPrice | currency: "NGN"}}
             </span>
             <ng-template #isNotOnSale>
-              {{product.price | currency}}
+              {{product.price | currency: "NGN"}}
             </ng-template>
           </td>
         </tr>

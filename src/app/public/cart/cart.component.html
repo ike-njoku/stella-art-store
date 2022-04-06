@@ -42,7 +42,7 @@
           </div>
         </td>
         <td>
-         <input [ngModel]="product.cartQuantity" type="number">
+         <input (change)="cartService.addProductToCart(product)" [ngModel]="product.cartQuantity" type="number">
         </td>
         <td>{{product.dimensions}}</td>
         <td>

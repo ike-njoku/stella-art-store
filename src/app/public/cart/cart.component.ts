@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PopUpNotificationService } from 'src/app/pop-up-notification/pop-up-notification.service';
 import { CartService } from 'src/app/shared-services/cart.service';
+import { GetProductDto } from 'src/app/shared-services/get-product-dto';
 import { environment } from 'src/environments/environment';
 
 @Component({
