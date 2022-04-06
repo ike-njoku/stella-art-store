@@ -7,10 +7,10 @@
     <div style="color: green;" class="mg-b-8 text-right font-bold">
       <span *ngIf="product.isOnSale == 'true'; else productIsNotOnSale">
         <del style="color: red">{{product.price | currency}}</del>
-        {{product.discountPrice | currency}}
+        {{product.discountPrice | currency: "NGN"}}
       </span>
       <ng-template #productIsNotOnSale>
-        {{product.price | currency}}
+        {{product.price | currency: "NGN"}}
       </ng-template>
     </div>
     <h2>
@@ -48,7 +48,6 @@
     <div id="main-media">
       <img src="{{baseUrl}}/{{product.files[currentFileIndex].filename}}" alt="">
     </div>
-
     <div class="text-center mg-t-2">
       <span (click)="jumpToFile(file)" class="mdi"
         [ngClass]="product.files.indexOf(file) == currentFileIndex? 'jump-to-active' : 'jump-to' "

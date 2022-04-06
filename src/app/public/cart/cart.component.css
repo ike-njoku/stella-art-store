@@ -35,6 +35,13 @@ td {
   color: white;
 }
 
+input {
+  outline: none;
+  border: 0px;
+  padding: 5%;
+  border-bottom: solid black 1px;
+}
+
 .image-container {
   height: calc(20vh/2);
   width: calc(20vh/2);

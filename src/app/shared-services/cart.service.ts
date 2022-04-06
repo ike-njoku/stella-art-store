@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from '../admin/auth/auth.service';
 import { PopUpNotificationService } from '../pop-up-notification/pop-up-notification.service';
-import { DeliveryAdddress } from '../shared-interfaces/create-order-dto';
 import { GetProductDto } from './get-product-dto';
 import { OrderService } from './order.service';
 
