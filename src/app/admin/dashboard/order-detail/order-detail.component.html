@@ -76,10 +76,10 @@
           <td>
             <span *ngIf="product.isOnSale == 'true'; else isNotOnSale">
               <del class="font-small">{{product.price | currency: "NGN"}}</del>
-            {{product.discountPrice | currency: "NGN"}}
+            {{product.discountPrice * product.cartQuantity| currency: "NGN"}}
             </span>
             <ng-template #isNotOnSale>
-              {{product.price | currency: "NGN"}}
+              {{product.price * product.cartQuantity| currency: "NGN"}}
             </ng-template>
           </td>
         </tr>
