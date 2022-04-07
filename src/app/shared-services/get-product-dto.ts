@@ -12,7 +12,7 @@ export interface GetProductDto {
   price: number;
   quantity: number;
   isOnSale: isOnSale;
-  cartQuantity?: number;
+  cartQuantity: number;
   __v: number;
   _id: string;
   files: GetFileDTO[];

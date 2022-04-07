@@ -42,7 +42,9 @@
           </div>
         </td>
         <td>
-         <input (change)="cartService.addProductToCart(product)" [ngModel]="product.cartQuantity" type="number">
+         <input
+         (change)="cartService.updateProductCartQuantity(product)"
+         [(ngModel)]="product.cartQuantity" type="number">
         </td>
         <td>{{product.dimensions}}</td>
         <td>
@@ -51,7 +53,11 @@
             {{product.discountPrice | currency}}
           </span>
           <ng-template #productIsNotOnSale>
-            {{product.price | currency: "NGN"}}
+
+            <span style="font-size: smaller;" class="text-small">
+              {{product.price | currency: "NGN"}} x {{product.cartQuantity}}
+            </span> <br>
+            {{product.price * product.cartQuantity| currency: "NGN"}}
           </ng-template>
         </td>
         <td>

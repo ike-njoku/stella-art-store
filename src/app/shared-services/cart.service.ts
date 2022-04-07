@@ -8,7 +8,7 @@ import { OrderService } from './order.service';
   providedIn: 'root'
 })
 export class CartService {
-  productsInCart:GetProductDto[] = [];
+  productsInCart: GetProductDto[] = [];
   cartTotal: number = 0;
   constructor(
     private popUpService: PopUpNotificationService,
@@ -38,6 +38,29 @@ export class CartService {
     this.popUpService.addNotification(`Added ${product.name} to cart`, 5000)
   }
 
+  updateProductCartQuantity(product: GetProductDto) {
+    let index: number = 0;
+    // remove the product from localStorage
+    Object.keys(localStorage).forEach((_productString) => {
+      if (_productString !== this.authService.sessionStorageString) {
+        if (_productString !== this.orderService.deliveryAddressStorageString) {
+          let _product: GetProductDto = JSON.parse(_productString);
+          if (_product._id == product._id) {
+            localStorage.removeItem(JSON.stringify(_product));
+            // remove from products in cart
+            index = this.productsInCart.indexOf(_product);
+          }
+        }
+      }
+
+    })
+
+    let update = JSON.stringify(product);
+    localStorage.setItem(update, update)
+    this.cartTotal = 0;
+    this.calculateCartTotal();
+  }
+
   removeProductFromCart(product: GetProductDto) {
     // clear products in cart
     this.productsInCart = [];
@@ -64,9 +87,9 @@ export class CartService {
 
     this.productsInCart.forEach((product) => {
       if (product.isOnSale == 'true') {
-        this.cartTotal += product.discountPrice
+        this.cartTotal += product.discountPrice * product.cartQuantity
       }
-      else this.cartTotal += product.price
+      else this.cartTotal += product.price * product.cartQuantity
     })
   }
 }
