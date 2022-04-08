@@ -64,10 +64,9 @@ video {
 }
 
 .images-container div {
-  height:calc(100vh/4);
-  width: calc(100vw/2/6);
   border: solid 1.5px black;
   overflow: hidden;
+  height: 50vh;
 }
 
 #images-grid {
