@@ -1,13 +1,18 @@
 <div class="side-nav pad-2">
   <img id="avatar" src="../../../assets/static-images/stella-arts-05.jpeg" alt="">
   <div style="margin-top: 3rem;" class="text-left">
-    <div (click)="navigate('admin/dashboard/products/list')" class="mg-t-10">
-     Products:  {{allProducts.length}}
+    <div class="drop-down mg-t-10">
+      Products: {{allProducts.length}}
+      <div (click)="navigate('admin/dashboard/products/list')" class="drop-down-content">- List Products</div>
     </div>
-    <div (click)="navigate('admin/dashboard/orders/all')" class="mg-t-4">
+    <div class="drop-down mg-t-4">
       Orders <span class="mdi mdi-animation"></span> : {{allOrders.length}}
+      <div (click)="navigate('admin/dashboard/orders/all')" class="drop-down-content">- List Orders</div>
+
+
     </div>
-    <div class="mg-t-4">
+    <div class="drop-down-content">test</div>
+    <div class="drop-down mg-t-4">
       Total in sales
       <span class="mdi mdi-cash-multiple"></span>
     </div>

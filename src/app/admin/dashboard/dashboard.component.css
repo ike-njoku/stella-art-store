@@ -10,6 +10,30 @@
   text-align: center;
 }
 
+.drop-down {
+  cursor: pointer;
+  display: block;
+  background-color: white;
+  color: black;
+  padding: 3%;
+  border-radius: 7px;
+}
+
+.drop-down-content {
+  display: none;
+}
+
+
+.drop-down:hover .drop-down-content {
+  display: block;
+  height: 100%;
+  font-size: smallss;
+  padding: 5%;
+}
+
+
+
+
 .sign-out {
   position: absolute;
   bottom: 10%;
