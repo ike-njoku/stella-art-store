@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnimationService } from 'src/app/shared-services/animation.service';
 import { NavigationService } from 'src/app/shared-services/navigation.service';
 
@@ -11,9 +12,15 @@ export class PublicIndexComponent implements OnInit {
 
   constructor(
     private navService: NavigationService,
-    private animationService: AnimationService
+    private animationService: AnimationService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
   landingWriteUp: string = '';
+
+  navigate(href: string) {
+    this.router.navigate([href], {relativeTo: this.route})
+  }
 
   ngOnInit(): void {
     this.displayWriteUp();
@@ -31,6 +38,8 @@ export class PublicIndexComponent implements OnInit {
       this.animationService.addAnimationOnScroll(document.getElementById('input-four'),'slide-in-right');
       this.animationService.addAnimationOnScroll(document.getElementById('input-five'),'slide-up');
     });
+
+    this.navigate('/home');
   }
 
 

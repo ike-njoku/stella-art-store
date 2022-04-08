@@ -1,29 +1,48 @@
-<div  class="video-container full-vh card">
+<div class="shd-1 text-right header sticky-top">
+  <ul>
+    <li (click)="navigate('/home')">Home</li>
+    <li (click)="navigate('/shop')">Shop</li>
+    <li (click)="scrollTo(about)">About</li>
+    <li (click)="scrollTo(contact)">Contact</li>
+  </ul>
+</div>
+<div class="video-container full-vh card">
   <video id="landing-video" class="landing hide-small" autoplay="autoplay" muted loop>
     <source src="../../../assets/static-images/stella-arts-vid-01.mov" type="video/mp4">
   </video>
   <div class="landing-writeup">
     <b> Hello! I'm Stella </b>
     <div>
-     {{landingWriteUp}}
+      {{landingWriteUp}}
     </div>
     <div class="">
-      <button
-      style="
+      <button style="
        width: 40%;
        font-size: 1.3rem;
       " class="pad-3 action-button" (click)="scrollTo(about)">About me</button>
     </div>
-   </div>
+  </div>
 </div>
 
 <div #about id="about" class="grid pad-10">
   <div style="overflow: hidden;" class="col-6 about pad-r-5 col-sm-full">
     <h2 id="about-header">About Me</h2>
     <p id="about-paragraph">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium porro aut ipsa quam quis minima quo ipsam cupiditate nulla et necessitatibus, quod officia ut vel nesciunt. Nobis, perferendis recusandae. Consectetur!
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur aliquam, magnam corrupti asperiores recusandae aut architecto laborum incidunt fuga non, ut, reiciendis alias doloribus adipisci nostrum! Cupiditate officia impedit quo!
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam tenetur modi voluptas, quasi ipsum optio impedit, cumque dolorem exercitationem, molestias illo sunt cupiditate debitis odit eius nam ipsam. Quod, voluptatum.
+      STELLA-MARIS ONWUAMA NIGERIAN, C. 1995 <br> <br>
+
+      Stella-maris onwuama (born 1995) is a self-taught multimedia visual artist, painter, photographer, and graphic
+      designer, specializing in Painting and pencil drawing. She obtained a BSc. in Biochemistry from Madonna University
+      in 2017. Due to his fasination with materials and objects, Stella’s art is experimental in nature, with each
+      medium used inspired by the ability to push it past its traditional function and perception. Her inspiration stems
+      from childhood, exploring the relationship between her self, materials, and his immediate environment. stella's
+      works have been featured in international and local exhibitions and fairs.
+      <br>
+      <!-- <br> -->
+      <br>
+      An explorer, stella is always seeking new mediums and means of expression, and gathers inspiration from personal
+      experiences, her immediate society, and music. Through the dynamic nature of her works, she connects her viewers
+      to multiples perspectives of the themes addressed. Ayanfe aims, through her art, to bring life to African culture
+      and impact the society for good.
     </p>
   </div>
   <div id="images-grid" class="col-6 grid col-sm-full images-container transparent">
@@ -47,12 +66,24 @@
     <div class="col-3">
       <img src="../../../assets/static-images/stella-arts-05.jpeg" alt="">
     </div>
+    <div class="col-3">
+      <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
+    </div>
+    <div class="col-3">
+      <img src="../../../assets/static-images/stella-arts-01.jpeg" alt="">
+    </div>
+    <div class="col-3">
+      <img src="../../../assets/static-images/stella-arts-04.jpeg" alt="" class="">
+    </div>
+    <div class="col-3">
+      <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
+    </div>
   </div>
   <div class="col-12 mg-t-6">
-    <button class="pad-1 action-button">Open Gallery</button>
- </div>
+    <button (click)="navigate('/shop')" class="pad-1 action-button">Open Gallery</button>
+  </div>
 </div>
-<div id="contact" class="grid full-vh pad-10 card">
+<div #contact id="contact" class="grid full-vh pad-10 card">
   <div class="col-5 col-sm-full">
     <form id="contact-form" class="grid">
       <div class="col-12">
@@ -60,7 +91,7 @@
       </div>
       <input id="input-one" class="col-12 mg-2" type="text" placeholder="First Name">
       <input id="input-two" class="col-12 mg-2" type="email" placeholder="Email Address">
-      <input id="input-three" class="col-12 mg-2" type="text" name=""  placeholder="Subject">
+      <input id="input-three" class="col-12 mg-2" type="text" name="" placeholder="Subject">
       <textarea id="input-four" class="col-12 mg-2" placeholder="Message" name="" cols="30" rows="10"></textarea>
       <input id="input-five" class="col-12 mg-2" type="submit" value="Send Email">
     </form>
@@ -72,4 +103,3 @@
     <!-- <img src="../../../assets/static-images/yellow-airplane-png.png" alt=""> -->
   </div>
 </div>
-

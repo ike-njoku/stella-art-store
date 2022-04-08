@@ -4,8 +4,8 @@
 /* stylesheet by ike-njoku David chikwunweike (ikenjokudc@gmail.com november 2020) */
 
 /* variables */
-/* @import url('https://fonts.googleapis.com/css2?family=Signika:wght@300;400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Signika:wght@300;700&family=Yuji+Boku&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@300;700&family=Yuji+Boku&display=swap');
 :root {
   --primary-color: #3F51B5;
   --secondary-color: red;

@@ -1,3 +1,22 @@
+.header {
+  z-index: 999;
+  background-color: white;
+}
+.header ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+.header ul li {
+  display: inline-block;
+  margin: 0.5%;
+  padding: 1%;
+  cursor: pointer;
+}
+
+.header ul li:hover {
+  font-weight: bold;
+}
 
 video {
   height: 100%;
