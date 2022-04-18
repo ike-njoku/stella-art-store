@@ -50,6 +50,8 @@ video {
   background-color: #E9E8ED;
   overflow: hidden;
   text-align: justify;
+  background-image:url('../../../assets/static-images/background-img-1.png');
+  color: white;
 }
 
 #contact {
