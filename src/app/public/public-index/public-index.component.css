@@ -3,6 +3,7 @@
   background-color: white;
   text-align: center;
 }
+
 .header ul {
   margin: 0px;
   padding: 0px;
@@ -52,6 +53,7 @@ video {
   overflow: hidden;
   text-align: justify;
 }
+
 #contact {
   background-image: url('../../../assets/static-images/yellow-airplane-png.png');
   background-position: center;
@@ -82,6 +84,39 @@ form {
 
 form input {
   padding: 2%;
+}
+
+#left-button {
+  left: 0;
+}
+#right-button {
+  right: 0;
+}
+.carousel-controls {
+  position: absolute;
+  opacity: 50%;
+  padding: 1%;
+  box-sizing: border-box;
+  z-index: 90;
+  font-weight: bold;
+  height: 100%;
+}
+
+.carousel-controls:hover {
+  opacity: 20%;
+}
+
+#images-grid {
+  white-space: nowrap;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  position: relative;
+  overflow: hidden;
+}
+
+#images-grid img {
+  height: 300px;
+  width: 250px;
 }
 
 @media (max-width: 600px) {

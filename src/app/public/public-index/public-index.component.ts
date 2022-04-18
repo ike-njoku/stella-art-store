@@ -22,6 +22,26 @@ export class PublicIndexComponent implements OnInit {
     this.router.navigate([href], {relativeTo: this.route})
   }
 
+  scrollLeft() {
+    let imagesGrid = document.getElementById('images-grid');
+    if (imagesGrid) {
+      if (imagesGrid.scrollLeft == 0) {
+        imagesGrid.scrollLeft = 1200
+      } else
+      imagesGrid.scrollLeft -= 300;
+    }
+  }
+
+  scrollRight() {
+    let imagesGrid = document.getElementById('images-grid');
+    if (imagesGrid) {
+      if (imagesGrid.scrollLeft > 1200) {
+        imagesGrid.scrollLeft = 0;
+      }
+      imagesGrid.scrollLeft += 300;
+    }
+  }
+
   ngOnInit(): void {
     this.displayWriteUp();
     window.addEventListener('scroll', () => {

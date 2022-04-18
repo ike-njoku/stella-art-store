@@ -3,7 +3,7 @@
     <li (click)="navigate('/home')">Home</li>
     <li (click)="navigate('/shop')">Shop</li>
     <li (click)="scrollTo(about)">About</li>
-    <!-- <li (click)="scrollTo(contact)">Contact</li> -->
+    <li>Contact</li>
   </ul>
 </div>
 <div class="video-container full-vh card">
@@ -23,28 +23,29 @@
     </div>
   </div>
 </div>
-
-<div #about id="about" class="grid pad-10">
-  <div id="images-grid" class="col-12 grid col-sm-full images-container transparent">
-    <div class="col-2">
-      <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
-    </div>
-    <div class="col-2">
-      <img src="../../../assets/static-images/stella-arts-04.jpeg" alt="">
-    </div>
-    <div class="col-2">
-      <img src="../../../assets/static-images/stella-arts-05.jpeg" alt="">
-    </div>
-    <div class="col-2">
-      <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
-    </div>
-    <div class="col-2">
-      <img src="../../../assets/static-images/stella-arts-04.jpeg" alt="">
-    </div>
-    <div class="col-2">
-      <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
-    </div>
+<div style="position: relative">
+  <div>
+    <button class="carousel-controls" id="left-button" (click)="scrollLeft()"><</button>
+    <button class="carousel-controls" id="right-button" (click)="scrollRight()" >></button>
   </div>
+  <div id="images-grid" class="col-12 col-sm-full images-container transparent">
+    <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
+    <img src="../../../assets/static-images/stella-arts-04.jpeg" alt="">
+    <img src="../../../assets/static-images/stella-arts-05.jpeg" alt="">
+    <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
+    <img src="../../../assets/static-images/stella-arts-04.jpeg" alt="">
+    <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
+    <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
+    <img src="../../../assets/static-images/stella-arts-04.jpeg" alt="">
+    <img src="../../../assets/static-images/stella-arts-05.jpeg" alt="">
+    <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
+    <img src="../../../assets/static-images/stella-arts-04.jpeg" alt="">
+    <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
+</div>
+
+</div>
+<div #about id="about" class="grid pad-10">
+
   <div style="overflow: hidden;" class="col-12 about pad-r-5 col-sm-full mg-t-5">
     <h2 id="about-header">About Me</h2>
     <p id="about-paragraph">
