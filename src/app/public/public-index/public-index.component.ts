@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AnimationService } from 'src/app/shared-services/animation.service';
 import { NavigationService } from 'src/app/shared-services/navigation.service';
-
+const contactForm = document.getElementById('contact');
 @Component({
   selector: 'app-public-index',
   templateUrl: './public-index.component.html',
@@ -20,6 +20,20 @@ export class PublicIndexComponent implements OnInit {
 
   navigate(href: string) {
     this.router.navigate([href], {relativeTo: this.route})
+  }
+
+  openContactForm() {
+    let contactForm = document.getElementById('contact');
+    if (contactForm) {
+      contactForm.classList.add('active');
+    }
+  }
+
+  hideContactForm() {
+    let contactForm = document.getElementById('contact');
+    if (contactForm) {
+      contactForm.classList.remove('active');
+    }
   }
 
   scrollLeft() {

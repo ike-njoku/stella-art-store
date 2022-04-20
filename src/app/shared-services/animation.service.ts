@@ -13,12 +13,10 @@ export class AnimationService {
     if (element)
     if (element.getBoundingClientRect().top < this.screenHeight) {
         element.classList.add(animationName);
-        console.log(element.classList)
     }
 
     else{
       element.classList.remove(animationName);
-      console.log('removing')
     }
   }
 }
