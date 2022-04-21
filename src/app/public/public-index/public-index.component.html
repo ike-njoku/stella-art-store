@@ -3,15 +3,15 @@
   <div #contact id="contact" class="pad-4 card">
     <span style="cursor: pointer;" (click)="hideContactForm()" class="float-right">close</span>
     <div class="col-sm-full">
-      <form id="contact-form" class="grid">
+      <form [formGroup]="contactMeForm" id="contact-form" class="grid">
         <div class="col-12">
           <h1 id="contact-header">Leave a Message</h1>
         </div>
-        <input id="input-one" class="col-12 mg-2" type="text" placeholder="First Name">
-        <input id="input-two" class="col-12 mg-2" type="email" placeholder="Email Address">
-        <input id="input-three" class="col-12 mg-2" type="text" name="" placeholder="Subject">
-        <textarea id="input-four" class="col-12 mg-2" placeholder="Message" name="" cols="30" rows="10"></textarea>
-        <input id="input-five" class="col-12 mg-2" type="submit" value="Send Email">
+        <input formControlName="userName" id="input-one" class="col-12 mg-2" type="text" placeholder="First Name">
+        <input formControlName="email" id="input-two" class="col-12 mg-2" type="email" placeholder="Email Address">
+        <input formControlName="subject" id="input-three" class="col-12 mg-2" type="text" name="" placeholder="Subject">
+        <textarea formControlName="body" id="input-four" class="col-12 mg-2" placeholder="Message" name="" cols="30" rows="10"></textarea>
+        <input (click)="sendEmail()" id="input-five" class="col-12 mg-2" type="submit" value="Send Email">
       </form>
     </div>
     <div class="col-7 contact-links text-center mg-t-4 col-sm-full">
@@ -47,7 +47,7 @@
     </div>
   </div>
 </div>
-<div style="position: relative">
+<div class="pad-t-10"  style="position: relative">
   <div>
     <button class="carousel-controls" id="left-button" (click)="scrollLeft()"><</button>
     <button class="carousel-controls" id="right-button" (click)="scrollRight()" >></button>

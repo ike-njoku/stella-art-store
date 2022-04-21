@@ -56,6 +56,8 @@ video {
 
 #contact {
   position: fixed;
+  color: transparent;
+  background-color: transparent;
   height: 0px;
   bottom: 0;
   z-index: -2;
@@ -63,10 +65,11 @@ video {
   margin: auto;
   min-width: 30%;
   transform: translate(-50%, 0);
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2); */
 }
 
 #contact.active {
+  color: black;
   background-color: white;
   z-index: 970;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);

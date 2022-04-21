@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EmailService } from 'src/app/email.service';
 import { AnimationService } from 'src/app/shared-services/animation.service';
 import { NavigationService } from 'src/app/shared-services/navigation.service';
 const contactForm = document.getElementById('contact');
@@ -14,8 +16,19 @@ export class PublicIndexComponent implements OnInit {
     private navService: NavigationService,
     private animationService: AnimationService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private emailService: EmailService
   ) { }
+
+  contactMeForm: FormGroup = this.formBuilder.group({
+    email: [null, Validators.required],
+    subject: [null, Validators.required],
+    userName: [null, Validators.required],
+    body: [null, Validators.required]
+  });
+
+
   landingWriteUp: string = '';
 
   navigate(href: string) {
@@ -76,9 +89,18 @@ export class PublicIndexComponent implements OnInit {
     this.navigate('/home');
   }
 
-
   scrollTo(element: HTMLElement) {
     this.navService.scrollTo(element)
+  }
+
+  sendEmail() {
+    this.emailService.sendEmail(this.contactMeForm.value)
+      .subscribe(
+        (response) => {
+          console.log(response);
+        },
+        (error: string) => window.alert(error)
+      )
   }
 
   displayWriteUp() {
