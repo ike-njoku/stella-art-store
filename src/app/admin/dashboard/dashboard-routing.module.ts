@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent, children: [
+      { path: 'update-bio', loadChildren: () => import('./update-bio/update-bio.module').then(m => m.UpdateBioModule) },
       { path: 'orders/all', loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule) },
       { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
       { path: 'products/update/:id', loadChildren: () => import('./update-product/update-product.module').then(m => m.UpdateProductModule) },
