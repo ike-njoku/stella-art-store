@@ -2,6 +2,10 @@
   <img id="avatar" src="../../../assets/static-images/stella-arts-05.jpeg" alt="">
   <div style="margin-top: 3rem;" class="text-left">
     <div class="drop-down mg-t-10">
+     Bio
+      <div (click)="navigate('admin/dashboard/update-bio')" class="drop-down-content">- Update Bio</div>
+    </div>
+    <div class="drop-down mg-t-10">
       Products: {{allProducts.length}}
       <div (click)="navigate('admin/dashboard/products/list')" class="drop-down-content">- List Products</div>
     </div>

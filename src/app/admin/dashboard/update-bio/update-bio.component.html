@@ -1,7 +1,7 @@
 <form [formGroup]="bioForm">
   <div class="grid">
-    <div class="col-6 col-sm-full card grid">
-      <textarea [(ngModel)]="bio" formControlName="bio" type="text" class="col-12 pad-5"> </textarea>
+    <div class="col-12 col-sm-full card grid">
+      <textarea style="font-size: 1.1rem;" cols="35" rows="35" [(ngModel)]="bio" formControlName="bio" type="text" class="col-12 pad-5"> </textarea>
       <button (click)="submit()" class="col-12 mg-t-4 pad-2">Update Bio</button>
     </div>
   </div>
