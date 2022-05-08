@@ -1,0 +1,10 @@
+<div class="grid">
+  <div class="grid col-6">
+    <div *ngIf="selectedFileData" class="col-12 pad-2 text-center">
+      <img height="40" width="40" *ngFor="let url of selectedFileData" src="{{url}}" alt="" class="col-3 rad-360 mg-2">
+    </div>
+    <input placeholder="Add Image to carousel" (click)="fileInput.click()" type="text" class="col-12 pad-1">
+    <input (change)="selectFiles($event)" #fileInput hidden type="file">
+    <button (click)="submitCarouselImage()" class="col-12 pad-1 mg-t-1">Submit carousel image</button>
+  </div>
+</div>
