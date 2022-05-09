@@ -1,10 +1,22 @@
 <div class="grid">
-  <div class="grid col-6">
-    <div *ngIf="selectedFileData" class="col-12 pad-2 text-center">
-      <img height="40" width="40" *ngFor="let url of selectedFileData" src="{{url}}" alt="" class="col-3 rad-360 mg-2">
+  <form class="col-6 col-sm-full" [formGroup]="uploadCarouselImageForm">
+    <div class="grid mg-r-2 card">
+      <div class="grid col-6">
+        <div *ngIf="selectedFileData" class="col-12 pad-2 text-center">
+          <img height="40" width="40" *ngFor="let url of selectedFileData" src="{{url}}" alt=""
+            class="col-3 rad-360 mg-2">
+        </div>
+        <input formControlName="alt" placeholder="Alternative text for image" class="col-12 pad-1 mg-1" type="text"
+          name="" id="">
+        <input placeholder="Add Image to carousel" (click)="fileInput.click()" type="text" class="col-12 pad-1">
+        <input formControlName="files" (change)="selectFiles($event)" #fileInput hidden type="file">
+        <button (click)="submitCarouselImage()" class="col-12 pad-1 mg-t-1">Submit carousel image</button>
+      </div>
     </div>
-    <input placeholder="Add Image to carousel" (click)="fileInput.click()" type="text" class="col-12 pad-1">
-    <input (change)="selectFiles($event)" #fileInput hidden type="file">
-    <button (click)="submitCarouselImage()" class="col-12 pad-1 mg-t-1">Submit carousel image</button>
+  </form>
+  <div class="grid mg-r-2 card col-6 col-sm-full">
+    <div *ngFor="let image of carouselImages" class="col-3 mg-2">
+      <img style="height: 100" width="100" *ngIf="image.files.length" src="{{apiBaseUrl}}/{{image.files[0].filename}}" alt="{{image.alt}}">
+    </div>
   </div>
 </div>

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { GetFileDTO } from 'src/app/shared-interfaces/get-file-dto';
+import { environment } from 'src/environments/environment';
 import { FileUploadService } from '../../file-upload.service';
-export interface UploadCarouselImage {
+import { CarouselImageService } from './carousel-image.service';
+export interface UploadCarouselImage extends GetFileDTO{
   alt: string;
-  files: any[];
 }
 
 @Component({
@@ -16,19 +18,22 @@ export class ManageCarouselComponent implements OnInit {
   selectedFiles: any[] = [];
   fileReader = new FileReader();
   selectedFileData: any[] = [];
-
+  carouselImages: any[] = [];
+  apiBaseUrl: string = environment.apiBaseUrl;
 
   constructor(
     private formBuilder: FormBuilder,
-    private fileService: FileUploadService
+    private fileService: FileUploadService,
+    private carouselImageService: CarouselImageService
   ) {}
 
   uploadCarouselImageForm = this.formBuilder.group({
-    files: [null, Validators.required]
+    files: [null, Validators.required],
+    alt: [null, Validators.required]
   });
 
   submitCarouselImage() {
-    const subUrl = '';
+    const subUrl = 'carousel-images';
     return this.fileService.uploadFormData(
       this.selectedFiles,
       subUrl,
@@ -36,16 +41,26 @@ export class ManageCarouselComponent implements OnInit {
     )
     .subscribe(
       (response) => {
-        window.alert(response)
+        console.log(response)
       },
       (error) => {
-        window.alert(error)
+       console.log(error)
       }
     )
 
   }
 
   ngOnInit(): void {
+    this.getCarouselImages()
+  }
+
+  getCarouselImages() {
+    this.carouselImageService.getCarouselImages()
+      .subscribe(
+        (response) => {
+          this.carouselImages = response.data;
+        }
+      )
   }
 
   selectFiles(event: any) {
