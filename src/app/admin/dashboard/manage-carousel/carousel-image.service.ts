@@ -15,10 +15,18 @@ export class CarouselImageService {
   ) { }
 
   getCarouselImages(): Observable<ServerResponseDto> {
-    return this.http.get<ServerResponseDto>(environment.apiBaseUrl + '/carousel-images')
+    return this.http.get<ServerResponseDto>(environment.apiBaseUrl + '/carousel-image')
       .pipe(
         (catchError(this.handleError))
       );
+  }
+
+  deleteCarouselImage(image: any): Observable<ServerResponseDto> {
+    const url = environment.apiBaseUrl + '/carousel-image'+`/${image._id}`;
+    return this.http.delete<ServerResponseDto>(url)
+      .pipe(
+        (catchError(this.handleError))
+      )
   }
 
   handleError(error: any) {

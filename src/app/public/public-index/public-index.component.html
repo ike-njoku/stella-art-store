@@ -10,7 +10,8 @@
         <input formControlName="userName" id="input-one" class="col-12 mg-2" type="text" placeholder="First Name">
         <input formControlName="email" id="input-two" class="col-12 mg-2" type="email" placeholder="Email Address">
         <input formControlName="subject" id="input-three" class="col-12 mg-2" type="text" name="" placeholder="Subject">
-        <textarea formControlName="body" id="input-four" class="col-12 mg-2" placeholder="Message" name="" cols="30" rows="10"></textarea>
+        <textarea formControlName="body" id="input-four" class="col-12 mg-2" placeholder="Message" name="" cols="30"
+          rows="10"></textarea>
         <input (click)="sendEmail()" id="input-five" class="col-12 mg-2" type="submit" value="Send Email">
       </form>
     </div>
@@ -48,26 +49,34 @@
     </div>
   </div>
 </div>
-<div class="pad-t-10"  style="position: relative">
+<div class="pad-t-10" style="position: relative">
   <div>
-    <button class="carousel-controls" id="left-button" (click)="scrollLeft()"><</button>
-    <button class="carousel-controls" id="right-button" (click)="scrollRight()" >></button>
+    <button class="carousel-controls" id="left-button" (click)="scrollLeft()">
+      prev
+    </button>
+    <button class="carousel-controls" id="right-button" (click)="scrollRight()">Next</button>
   </div>
-  <div id="images-grid" class="col-12 col-sm-full images-container transparent">
-    <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
-    <img src="../../../assets/static-images/stella-arts-04.jpeg" alt="">
-    <img src="../../../assets/static-images/stella-arts-05.jpeg" alt="">
-    <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
-    <img src="../../../assets/static-images/stella-arts-04.jpeg" alt="">
-    <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
-    <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
-    <img src="../../../assets/static-images/stella-arts-04.jpeg" alt="">
-    <img src="../../../assets/static-images/stella-arts-05.jpeg" alt="">
-    <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
-    <img src="../../../assets/static-images/stella-arts-04.jpeg" alt="">
-    <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
-</div>
+  <div *ngIf="carouselImages.length; else emptyCarousel" id="images-grid"
+    class="col-12 col-sm-full images-container transparent">
+    <img *ngFor="let image of carouselImages" src="{{apiBaseUrl}}/{{image.files[0].filename}}" alt="">
+  </div>
 
+  <ng-template #emptyCarousel>
+    <div id="images-grid" class="col-12 col-sm-full images-container transparent">
+      <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
+      <img src="../../../assets/static-images/stella-arts-04.jpeg" alt="">
+      <img src="../../../assets/static-images/stella-arts-05.jpeg" alt="">
+      <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
+      <img src="../../../assets/static-images/stella-arts-04.jpeg" alt="">
+      <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
+      <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
+      <img src="../../../assets/static-images/stella-arts-04.jpeg" alt="">
+      <img src="../../../assets/static-images/stella-arts-05.jpeg" alt="">
+      <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
+      <img src="../../../assets/static-images/stella-arts-04.jpeg" alt="">
+      <img src="../../../assets/static-images/stella-arts-02.jpeg" alt="">
+    </div>
+  </ng-template>
 </div>
 <div #about id="about" class="grid pad-l-10 pad-r-10 pad-b-10 pad-t-5">
 
@@ -96,5 +105,3 @@
     <button (click)="navigate('/shop')" class="pad-1 action-button">Open Gallery</button>
   </div>
 </div>
-
-

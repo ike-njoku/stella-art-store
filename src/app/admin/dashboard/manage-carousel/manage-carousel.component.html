@@ -15,7 +15,8 @@
     </div>
   </form>
   <div class="grid mg-r-2 card col-6 col-sm-full">
-    <div *ngFor="let image of carouselImages" class="col-3 mg-2">
+    <div *ngFor="let image of carouselImages" class="col-3 mg-2 card">
+      <span (click)="deleteImage(image)" style="float: right;">x</span>
       <img style="height: 100" width="100" *ngIf="image.files.length" src="{{apiBaseUrl}}/{{image.files[0].filename}}" alt="{{image.alt}}">
     </div>
   </div>

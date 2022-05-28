@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { PopUpNotificationService } from 'src/app/pop-up-notification/pop-up-notification.service';
 import { GetFileDTO } from 'src/app/shared-interfaces/get-file-dto';
 import { environment } from 'src/environments/environment';
 import { FileUploadService } from '../../file-upload.service';
 import { CarouselImageService } from './carousel-image.service';
-export interface UploadCarouselImage extends GetFileDTO{
+export interface UploadCarouselImage extends GetFileDTO {
   alt: string;
 }
 
@@ -24,8 +25,9 @@ export class ManageCarouselComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private fileService: FileUploadService,
-    private carouselImageService: CarouselImageService
-  ) {}
+    private carouselImageService: CarouselImageService,
+    private notificationService: PopUpNotificationService
+  ) { }
 
   uploadCarouselImageForm = this.formBuilder.group({
     files: [null, Validators.required],
@@ -33,25 +35,40 @@ export class ManageCarouselComponent implements OnInit {
   });
 
   submitCarouselImage() {
-    const subUrl = 'carousel-images';
+    const subUrl = 'carousel-image';
     return this.fileService.uploadFormData(
       this.selectedFiles,
       subUrl,
       this.uploadCarouselImageForm.value
     )
-    .subscribe(
-      (response) => {
-        console.log(response)
-      },
-      (error) => {
-       console.log(error)
-      }
-    )
+      .subscribe(
+        (response) => {
+          console.log(response)
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
 
   }
 
   ngOnInit(): void {
     this.getCarouselImages()
+  }
+
+  deleteImage(image: any) {
+    this.carouselImageService.deleteCarouselImage(image)
+      .subscribe(
+        (response) => {
+          console.log(response);
+          this.notificationService.addNotification(response.message, 5000);
+          this.carouselImages.splice(this.carouselImages.indexOf(image), 1);
+        },
+        (error) => {
+          console.log(error)
+          this.notificationService.addNotification(error.message, 5000)
+        }
+      )
   }
 
   getCarouselImages() {

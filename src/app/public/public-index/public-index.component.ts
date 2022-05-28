@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CarouselImageService } from 'src/app/admin/dashboard/manage-carousel/carousel-image.service';
 import { BioService } from 'src/app/admin/dashboard/update-bio/bio.service';
 import { EmailService } from 'src/app/email.service';
 import { AnimationService } from 'src/app/shared-services/animation.service';
 import { NavigationService } from 'src/app/shared-services/navigation.service';
+import { environment } from 'src/environments/environment';
 const contactForm = document.getElementById('contact');
 @Component({
   selector: 'app-public-index',
@@ -12,7 +14,8 @@ const contactForm = document.getElementById('contact');
   styleUrls: ['./public-index.component.css']
 })
 export class PublicIndexComponent implements OnInit {
-
+  carouselImages: any[] = [];
+  public readonly apiBaseUrl: string = environment.apiBaseUrl;
   constructor(
     private navService: NavigationService,
     private animationService: AnimationService,
@@ -20,7 +23,8 @@ export class PublicIndexComponent implements OnInit {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private emailService: EmailService,
-    private bioService: BioService
+    private bioService: BioService,
+    private carouselImageService: CarouselImageService
   ) { }
 
   contactMeForm: FormGroup = this.formBuilder.group({
@@ -61,6 +65,18 @@ export class PublicIndexComponent implements OnInit {
     }
   }
 
+  getCarouselImages() {
+    this.carouselImageService.getCarouselImages()
+      .subscribe(
+        (response) => {
+          this.carouselImages = response.data;
+        },
+        (error) => {
+          console.log(error);
+        }
+      )
+  }
+
   scrollRight() {
     let imagesGrid = document.getElementById('images-grid');
     if (imagesGrid) {
@@ -74,6 +90,7 @@ export class PublicIndexComponent implements OnInit {
   ngOnInit(): void {
     this.getBio();
     this.displayWriteUp();
+    this.getCarouselImages();
     window.addEventListener('scroll', () => {
       this.animationService.addAnimationOnScroll(document.getElementById('contact'), 'slide-up');
       this.animationService.addAnimationOnScroll(document.getElementById('contact-header'), 'slide-up');
