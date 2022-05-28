@@ -123,6 +123,7 @@ export class PublicIndexComponent implements OnInit {
     this.bioService.getBio()
       .subscribe(
         (response) => {
+          console.log(response);
           this.bio = response.data.bio;
         },
         (error) => {

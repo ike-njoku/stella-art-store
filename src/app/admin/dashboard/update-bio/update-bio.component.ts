@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PopUpNotificationService } from 'src/app/pop-up-notification/pop-up-notification.service';
 import { BioService } from './bio.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class UpdateBioComponent implements OnInit {
   bio!: string;
   constructor(
     private bioService: BioService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private notificationService: PopUpNotificationService
   ) { }
 
   bioForm: FormGroup = this.formBuilder.group(
@@ -27,8 +29,12 @@ export class UpdateBioComponent implements OnInit {
   submit() {
     this.bioService.updateBio(this.bioForm.value)
       .subscribe(
-        (response) => {console.log(response)},
-        (error) => {console.log(error)}
+        (response) => {
+          this.notificationService.addNotification(response.message, 5000)
+        },
+        (error) => {
+          this.notificationService.addNotification(error, 5000)
+        }
       )
   }
 
