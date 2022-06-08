@@ -105,7 +105,6 @@ export class PublicIndexComponent implements OnInit {
       this.animationService.addAnimationOnScroll(document.getElementById('input-four'), 'slide-in-right');
       this.animationService.addAnimationOnScroll(document.getElementById('input-five'), 'slide-up');
     });
-
     this.navigate('/home');
   }
 

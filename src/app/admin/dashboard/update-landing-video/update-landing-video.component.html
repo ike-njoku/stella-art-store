@@ -1,0 +1,10 @@
+<div *ngIf="selectedFileData.length">Video Has been Selected</div>
+<form [formGroup]="uploadVideoForm">
+  <div class="grid">
+    <div class="card pad-5 col-6 col-sm-full grid">
+      <input (click)="fileInput.click()" type="text" class="col-12 pad-1 mg-t-1" placeholder="Select Video to Upload">
+      <input (change)="selectFiles($event)" #fileInput hidden type="file">
+      <button (click)="uploadVideo()" type="submit" class="col-12 pad-1 mg-t-1">Upload Video</button>
+    </div>
+  </div>
+</form>
